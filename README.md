@@ -1,2 +1,2 @@
 # RvBVakama
-A Page For RvBVakama
+I declare this area of internet as my own!
