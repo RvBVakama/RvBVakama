@@ -5,7 +5,6 @@
 
 #include "Collider.h"
 #include "Matrix3.h"
-#include "Define.h"
 #include <vector>
 
 //--------------------------------------------------------------------------------------
@@ -59,9 +58,6 @@ public:
 	//a timer
 	double m_timer;
 
-	//mouth open duration
-	int nMouthCounter;
-	
 	//stage counter
 	int nStage;
 
