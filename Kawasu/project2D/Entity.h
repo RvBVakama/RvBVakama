@@ -46,6 +46,10 @@ public:
 	//--------------------------------------------------------------------------------------
 	void SetChild(Entity* a);
 	
+	void SetActive(bool a);
+	
+	bool GetActive();
+
 	//any object with this bool as true when its touched it kills what touches it.
 	bool bCanKill;
 
@@ -54,6 +58,9 @@ public:
 
 	//Checks if the wall has been hit to flip the player texture
 	bool bWallHit;
+
+	//Active or not?
+	bool m_bActive;
 
 	//a timer
 	double m_timer;

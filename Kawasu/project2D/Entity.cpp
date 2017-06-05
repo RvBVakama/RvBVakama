@@ -17,7 +17,8 @@ Entity::Entity()
 	bWallHit = true;
 	//setting the dead value
 	bDead = false;
-
+	//settings the default active value
+	m_bActive = false;
 }
 
 //--------------------------------------------------------------------------------------
@@ -65,6 +66,16 @@ void Entity::SetChild(Entity* a)
 {
 	//pushing back the child one spot in the array
 	m_children.push_back(a);
+}
+
+void Entity::SetActive(bool a)
+{
+	m_bActive = a;
+}
+
+bool Entity::GetActive()
+{
+	return m_bActive;
 }
 
 //--------------------------------------------------------------------------------------
