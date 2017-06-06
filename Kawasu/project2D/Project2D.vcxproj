@@ -170,6 +170,7 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuPause.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
@@ -187,6 +188,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ListNode.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuPause.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />

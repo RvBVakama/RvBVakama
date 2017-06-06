@@ -4,6 +4,8 @@
 #include "Renderer2D.h"
 #include "Audio.h"
 
+class MenuPause;
+
 class Application2D : public aie::Application {
 public:
 
@@ -15,6 +17,9 @@ public:
 
 	virtual void update(float deltaTime);
 	virtual void draw();
+
+private:
+	MenuPause* m_MenuPause;
 
 protected:
 
