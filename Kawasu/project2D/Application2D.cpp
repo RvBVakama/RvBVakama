@@ -25,8 +25,8 @@ bool Application2D::startup() {
 
 	m_MenuPause = new MenuPause();
 
-	m_cameraX = -518;
-	m_cameraY = -400;
+	m_cameraX = 0;
+	m_cameraY = 0;
 	m_timer = 0;
 
 	return true;
@@ -66,6 +66,9 @@ void Application2D::update(float deltaTime) {
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
 		m_audio->play();
 
+	MenuPause menupause;
+	menupause.Update(deltaTime);
+
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
@@ -76,18 +79,10 @@ void Application2D::draw() {
 	// wipe the screen to the background colour
 	clearScreen();
 
-	// set the camera position before we begin rendering
-	m_2dRenderer->setCameraPos(m_cameraX, m_cameraY);
-
 	// begin drawing sprites
 	m_2dRenderer->begin();
 
-	// output some text, uses the last used colour
-	char fps[32];
-	sprintf_s(fps, 32, "FPS: %i", getFPS());
-	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
-	m_2dRenderer->drawText(m_font, "Press Space for sound!", 0, 720 - 64);
-
+	// drawing the pause menu
 	m_MenuPause->Draw(m_2dRenderer);
 
 	// done drawing sprites

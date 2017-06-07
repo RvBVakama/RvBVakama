@@ -25,6 +25,8 @@ public:
 	void Draw(Renderer2D* m_2dRenderer);
 	
 private:
+	Vector2 m_pos;
 	Texture* m_MenuPause;
+	Texture* m_MenuSelect;
 	MenuSelector nMenuNo;
 };
