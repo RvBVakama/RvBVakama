@@ -19,7 +19,7 @@ void Menu::OnEnter()
 
 }
 
-void Menu::OnUpdate(float deltaTime)
+void Menu::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
 
 	m_pLogo = new Texture("./textures/spikeup.png");

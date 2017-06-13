@@ -1,27 +1,25 @@
-#include "GameScene.h"
-#include "Input.h"
-#include "StateMachine.h"
+#include "Splash.h"
 #include "Define.h"
-
-using namespace aie;
+#include "StateMachine.h"
 
 //--------------------------------------------------------------------------------------
 // Default Constructor
 //--------------------------------------------------------------------------------------
-GameScene::GameScene()
+Splash::Splash()
 {
-	m_BG = new Texture("./textures/bg.png");
+	m_splash = new Texture("./textures/splash.png");
+	m_fTimer = 0.0f;
 }
 
 //--------------------------------------------------------------------------------------
 // Default Destructor
 //--------------------------------------------------------------------------------------
-GameScene::~GameScene()
+Splash::~Splash()
 {
-	delete m_BG;
+	delete m_splash;
 }
 
-void GameScene::OnEnter()
+void Splash::OnEnter()
 {
 }
 
@@ -31,25 +29,27 @@ void GameScene::OnEnter()
 // Param:
 //		deltaTime: It's not used.
 //--------------------------------------------------------------------------------------
-void GameScene::OnUpdate(float deltaTime, StateMachine* stateMachine)
+void Splash::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
-	Input* input = Input::getInstance();
-
-	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
-		stateMachine->SetState(E_MENUPAUSE);
+	m_fTimer += deltaTime;
+	if (m_fTimer > 3.0f)
+	{
+		stateMachine->SetState(E_GAMESCENE);
+	}
 }
 
 //--------------------------------------------------------------------------------------
-// Draws the GameScene texture.
+// Draws the Splash Screen texture.
 //
 // Param:
 //		m_2dRenderer: Passes in the renderer to allow for drawing trxtures.
 //--------------------------------------------------------------------------------------
-void GameScene::OnDraw(Renderer2D * m_2dRenderer)
+void Splash::OnDraw(Renderer2D * m_2dRenderer)
 {
-	m_2dRenderer->drawSprite(m_BG, SCREENX / 2, SCREENY / 2, 0, 0, 0, 100);
+	m_2dRenderer->drawSprite(m_splash, SCREENX / 2, SCREENY / 2, 0, 0, 0, 1);
 }
 
-void GameScene::OnExit()
+void Splash::OnExit()
 {
 }
+

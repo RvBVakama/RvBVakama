@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------
-// Class for the GameScene
+// Class for Splash
 //--------------------------------------------------------------------------------------
 #pragma once
 
@@ -14,18 +14,18 @@ using namespace aie;
 // Stores data used by the player, handles rendering and input.
 // Inherits from Entity.
 //--------------------------------------------------------------------------------------
-class GameScene : public BaseState
+class Splash : public BaseState
 {
 public:
 	//--------------------------------------------------------------------------------------
 	// Default Constructor
 	//--------------------------------------------------------------------------------------
-	GameScene();
+	Splash();
 
 	//--------------------------------------------------------------------------------------
 	// Default Destructor
 	//--------------------------------------------------------------------------------------
-	~GameScene();
+	~Splash();
 
 	//optional extra to reinitialize anything you need to
 	void OnEnter();
@@ -37,9 +37,9 @@ public:
 	//		deltaTime: It's not used.
 	//--------------------------------------------------------------------------------------
 	void OnUpdate(float deltaTime, StateMachine* stateMachine);
-	
+
 	//--------------------------------------------------------------------------------------
-	// Draws the GameScene texture.
+	// Draws the Splash texture.
 	//
 	// Param:
 	//		m_2dRenderer: Passes in the renderer to allow for drawing trxtures.
@@ -50,6 +50,7 @@ public:
 	void OnExit();
 
 private:
-	//the GameScene texture
-	aie::Texture* m_BG;
+	//the Laoding Screen texture
+	aie::Texture* m_splash;
+	float m_fTimer;
 };

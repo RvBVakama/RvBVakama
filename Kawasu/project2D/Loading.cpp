@@ -1,27 +1,23 @@
-#include "GameScene.h"
-#include "Input.h"
-#include "StateMachine.h"
+#include "Loading.h"
 #include "Define.h"
-
-using namespace aie;
 
 //--------------------------------------------------------------------------------------
 // Default Constructor
 //--------------------------------------------------------------------------------------
-GameScene::GameScene()
+Loading::Loading()
 {
-	m_BG = new Texture("./textures/bg.png");
+	m_Loading = new Texture("./textures/loading.png");
 }
 
 //--------------------------------------------------------------------------------------
 // Default Destructor
 //--------------------------------------------------------------------------------------
-GameScene::~GameScene()
+Loading::~Loading()
 {
-	delete m_BG;
+	delete m_Loading;
 }
 
-void GameScene::OnEnter()
+void Loading::OnEnter()
 {
 }
 
@@ -31,25 +27,22 @@ void GameScene::OnEnter()
 // Param:
 //		deltaTime: It's not used.
 //--------------------------------------------------------------------------------------
-void GameScene::OnUpdate(float deltaTime, StateMachine* stateMachine)
+void Loading::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
-	Input* input = Input::getInstance();
-
-	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
-		stateMachine->SetState(E_MENUPAUSE);
 }
 
 //--------------------------------------------------------------------------------------
-// Draws the GameScene texture.
+// Draws the Loading Screen texture.
 //
 // Param:
 //		m_2dRenderer: Passes in the renderer to allow for drawing trxtures.
 //--------------------------------------------------------------------------------------
-void GameScene::OnDraw(Renderer2D * m_2dRenderer)
+void Loading::OnDraw(Renderer2D * m_2dRenderer)
 {
-	m_2dRenderer->drawSprite(m_BG, SCREENX / 2, SCREENY / 2, 0, 0, 0, 100);
+	m_2dRenderer->drawSprite(m_Loading, SCREENX / 2, SCREENY / 2, 0, 0, 0, 1);
 }
 
-void GameScene::OnExit()
+void Loading::OnExit()
 {
 }
+

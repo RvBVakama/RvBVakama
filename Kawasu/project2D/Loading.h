@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------
-// Class for the GameScene
+// Class for Loading
 //--------------------------------------------------------------------------------------
 #pragma once
 
@@ -14,18 +14,18 @@ using namespace aie;
 // Stores data used by the player, handles rendering and input.
 // Inherits from Entity.
 //--------------------------------------------------------------------------------------
-class GameScene : public BaseState
+class Loading : public BaseState
 {
 public:
 	//--------------------------------------------------------------------------------------
 	// Default Constructor
 	//--------------------------------------------------------------------------------------
-	GameScene();
+	Loading();
 
 	//--------------------------------------------------------------------------------------
 	// Default Destructor
 	//--------------------------------------------------------------------------------------
-	~GameScene();
+	~Loading();
 
 	//optional extra to reinitialize anything you need to
 	void OnEnter();
@@ -36,10 +36,10 @@ public:
 	// Param:
 	//		deltaTime: It's not used.
 	//--------------------------------------------------------------------------------------
-	void OnUpdate(float deltaTime, StateMachine* stateMachine);
-	
+	void OnUpdate(float deltaTime, StateMachine* StateMachine);
+
 	//--------------------------------------------------------------------------------------
-	// Draws the GameScene texture.
+	// Draws the Loading texture.
 	//
 	// Param:
 	//		m_2dRenderer: Passes in the renderer to allow for drawing trxtures.
@@ -50,6 +50,6 @@ public:
 	void OnExit();
 
 private:
-	//the GameScene texture
-	aie::Texture* m_BG;
+	//the Laoding Screen texture
+	aie::Texture* m_Loading;
 };

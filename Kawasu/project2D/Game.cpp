@@ -15,7 +15,7 @@ void Game::OnEnter()
 {
 }
 
-void Game::OnUpdate(float deltaTime)
+void Game::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
 }
 

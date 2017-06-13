@@ -8,7 +8,7 @@ public:
 	~Game();
 
 	void OnEnter();
-	void OnUpdate(float deltaTime);
+	void OnUpdate(float deltaTime, StateMachine* StateMachine);
 	void OnDraw(Renderer2D* renderer2d);
 	void OnExit();
 

@@ -1,10 +1,13 @@
 #pragma once
-
 #include "Application.h"
 #include "Renderer2D.h"
 #include "Audio.h"
 
+class StateMachine;
 class MenuPause;
+class GameScene;
+class Loading;
+class Splash;
 
 class Application2D : public aie::Application {
 public:
@@ -20,15 +23,15 @@ public:
 
 private:
 	MenuPause* m_MenuPause;
-
-protected:
+	GameScene* m_BG;
+	Loading* m_Loading;
+	Splash* m_Splash;
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Texture*		m_texture;
-	aie::Texture*		m_shipTexture;
 	aie::Font*			m_font;
 	aie::Audio*			m_audio;
+	StateMachine*		m_StateMachine;
 
 	float m_cameraX, m_cameraY;
-	float m_timer;
 };

@@ -7,7 +7,6 @@ StateMachine::StateMachine()
 	m_nCurrentState = -1;
 }
 
-
 StateMachine::~StateMachine()
 {
 	for (int i = 0; i < m_StateList.Size(); ++i)
@@ -21,10 +20,10 @@ void StateMachine::Update(float fDetaTime)
 	if (m_StateList.Size() <= 0)
 		return;
 
-	if (m_nCurrentState <= 0)
+	if (m_nCurrentState < 0)
 		return;
 
-	m_StateList[m_nCurrentState]->OnUpdate(fDetaTime);
+	m_StateList[m_nCurrentState]->OnUpdate(fDetaTime, this);
 }
 
 void StateMachine::Draw(Renderer2D * m_2dRenderer)

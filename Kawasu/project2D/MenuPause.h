@@ -2,27 +2,35 @@
 
 #include "Texture.h"
 #include "Renderer2d.h"
-#include "Entity.h"
+#include "BaseState.h"
+#include "Vector2.h"
 #include "Input.h"
 
 using namespace aie;
 
-class MenuPause : public Entity
+class MenuPause : public BaseState
 {
 	enum MenuSelector
 	{
 		E_RESUME,
 		E_DONATE,
-		E_EXIT
+		E_EXIT,
+		E_NONE
 	};
 
 public:
 	MenuPause();
 	~MenuPause();
 
-	void Update(float deltaTime);
+	//optional extra to reinitialize anything you need to
+	void OnEnter();
 
-	void Draw(Renderer2D* m_2dRenderer);
+	void OnUpdate(float deltaTime, StateMachine* StateMachine);
+
+	void OnDraw(Renderer2D* m_2dRenderer);
+
+	//optional extra to deinitialize anything you need to
+	void OnExit();
 	
 private:
 	Vector2 m_pos;
