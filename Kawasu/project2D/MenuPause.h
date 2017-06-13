@@ -25,7 +25,7 @@ public:
 	//optional extra to reinitialize anything you need to
 	void OnEnter();
 
-	void OnUpdate(float deltaTime, StateMachine* StateMachine);
+	void OnUpdate(float deltaTime, StateMachine* stateMachine);
 
 	void OnDraw(Renderer2D* m_2dRenderer);
 

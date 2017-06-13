@@ -1,6 +1,6 @@
 #include "MenuPause.h"
+#include "StateMachine.h"
 #include "Define.h"
-
 
 MenuPause::MenuPause()
 {
@@ -46,6 +46,11 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	{
 		nMenuNo = E_EXIT;
 		printf("exit");
+	}
+	
+	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
+	{
+			stateMachine->SetState(E_GAMESCENE);
 	}
 }
 
