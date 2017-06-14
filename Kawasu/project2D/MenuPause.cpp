@@ -33,6 +33,10 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	if (fMouseX > 320 && fMouseX < 726 && fMouseY > 450 && fMouseY < 524)
 	{
 		nMenuNo = E_RESUME;
+
+		if (input->wasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
+				stateMachine->PushState(E_GAMESCENE);
+
 		printf("resume");
 	}
 	
@@ -50,7 +54,7 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	
 	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
 	{
-			stateMachine->SetState(E_GAMESCENE);
+			stateMachine->PushState(E_GAMESCENE);
 	}
 }
 

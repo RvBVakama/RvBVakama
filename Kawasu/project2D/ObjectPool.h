@@ -1,6 +1,8 @@
 #pragma once
+#include "DynamicArray.h"
 
 class Entity;
+class Bombs;
 
 class ObjectPool
 {
@@ -8,10 +10,10 @@ public:
 	ObjectPool(int nMaxSize);
 	~ObjectPool();
 
-	Entity* Allocate();
-	void Deallocate(Entity* object);
+	Bombs* Allocate();
+	void Deallocate(Bombs* object);
 
 private:
-	Entity** m_pPool;
+	DynamicArray<Bombs*> m_pData;
 	int m_nMaxSize;
 };

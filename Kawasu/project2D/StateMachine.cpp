@@ -4,7 +4,6 @@
 
 StateMachine::StateMachine()
 {
-	m_nCurrentState = -1;
 }
 
 StateMachine::~StateMachine()
@@ -20,37 +19,42 @@ void StateMachine::Update(float fDetaTime)
 	if (m_StateList.Size() <= 0)
 		return;
 
-	if (m_nCurrentState < 0)
+	if (m_Stack.Size() < 0)
 		return;
 
-	m_StateList[m_nCurrentState]->OnUpdate(fDetaTime, this);
+	m_Stack.Top()->OnUpdate(fDetaTime, this);
 }
 
 void StateMachine::Draw(Renderer2D * m_2dRenderer)
 {
 
-	if (m_StateList.Size() <= 0)
+	if (m_StateList.Size() < 0)
 		return;
 
-	m_StateList[m_nCurrentState]->OnDraw(m_2dRenderer);
+	m_Stack.Top()->OnDraw(m_2dRenderer);
 }
 
-void StateMachine::SetState(int nStateIndex)
+void StateMachine::PushState(int nStateIndex)
 {
 	_ASSERT(nStateIndex < m_StateList.Size());
 	//assert(nStateIndex < m_StateList.Size());
 	if (nStateIndex >= m_StateList.Size())
 		return;
 
-	if (m_nCurrentState >= 0)
-		m_StateList[m_nCurrentState]->OnExit();
+	if (m_Stack.Size() > 0)
+		m_Stack.Top()->OnExit();
 
-	m_nCurrentState = nStateIndex;
+	m_Stack.Push(m_StateList[nStateIndex]);
 
-	m_StateList[m_nCurrentState]->OnEnter();
+	m_Stack.Top()->OnEnter();
 }
 
-void StateMachine::AddState(int nStateIndex, BaseState* pState)
+void StateMachine::RegisterState(int nStateIndex, BaseState* pState)
 {
 	m_StateList.Insert(nStateIndex, pState);
+}
+
+void StateMachine::PopState()
+{
+
 }

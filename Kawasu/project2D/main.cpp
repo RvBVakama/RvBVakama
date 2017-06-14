@@ -1,7 +1,11 @@
 #include "Application2D.h"
+#include <iostream>
+#include <time.h>
 
 int main() {
 	
+	srand(time(NULL));
+
 	// allocation
 	auto app = new Application2D();
 

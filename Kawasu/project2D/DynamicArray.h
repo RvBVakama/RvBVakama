@@ -1,5 +1,6 @@
 #pragma once
 #include <memory.h>
+#include <crtdbg.h>
 
 template <typename T>
 class DynamicArray
@@ -10,11 +11,12 @@ public:
 		int nCapacity = initialSize;
 		if (nCapacity <= 0)
 			nCapacity = 1;
+
 		m_pData = new T[nCapacity];
+		_ASSERT(m_pData);
 		m_nCapacity = nCapacity;
 		m_nUsed = 0;
 		memset(&m_NullValue, 0, sizeof(T));
-
 	}
 
 	~DynamicArray()
@@ -46,7 +48,9 @@ public:
 
 	void Insert(int index, T value)
 	{
-		if (index > m_nUsed)
+		_ASSERT(index <= m_nUsed);
+
+			if (index > m_nUsed)
 			return;
 
 		if (m_nUsed >= m_nCapacity)
@@ -65,6 +69,7 @@ public:
 
 	T PopBack()
 	{
+		_ASSERT();
 		if (m_nUsed <= 0)
 			return 0;
 
@@ -113,7 +118,7 @@ public:
 		m_nCapacity = m_nUsed;
 	}
 
-	T& operator[](const int index)
+	T operator[](const int index)
 	{
 		if (index >= m_nUsed)
 			return m_NullValue;

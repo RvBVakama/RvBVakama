@@ -2,6 +2,8 @@
 #include "Renderer2D.h"
 #include "DynamicArray.h"
 #include "BaseState.h"
+#include "Stack.h"
+
 using namespace aie;
 
 class StateMachine
@@ -12,12 +14,11 @@ public:
 
 	void Update(float fDetaTime);
 	void Draw(Renderer2D* m_2dRenderer);
-	void SetState(int nStateIndex);
-	void AddState(int nStateIndex, BaseState* pState);
-
-
+	void PushState(int nStateIndex);
+	void RegisterState(int nStateIndex, BaseState* pState);
+	void PopState();
+	
 private:
 	DynamicArray<BaseState*> m_StateList;
-	int m_nCurrentState;
+	Stack<BaseState*> m_Stack;
 };
-

@@ -1,13 +1,12 @@
 #include "ObjectPool.h"
-#include "Entity.h"
+#include "Bombs.h"
 
 ObjectPool::ObjectPool(int nMaxSize)
 {
 	m_nMaxSize = nMaxSize;
-	m_pPool = new Entity*[nMaxSize];
 	for (int i = 0; i < nMaxSize; ++i)
 	{
-		m_pPool[i] = new Entity();
+		m_pData.PushBack(new Bombs());
 	}
 }
 
@@ -15,26 +14,25 @@ ObjectPool::~ObjectPool()
 {
 	for (int i = 0; i < m_nMaxSize; ++i)
 	{
-		delete m_pPool[i];
+		delete m_pData[i];
 	}
-	delete[] m_pPool;
 }
 
-Entity* ObjectPool::Allocate()
+Bombs* ObjectPool::Allocate()
 {
 	for(int i = 0; i < m_nMaxSize; ++i)
 	{
-		if (!m_pPool[i]->GetActive())
+		if (!m_pData[i]->GetActive())
 		{
-			m_pPool[i]->SetActive(true);
-			return m_pPool[i];
+			m_pData[i]->SetActive(true);
+			return m_pData[i];
 		}
 	}
 
 	return nullptr;
 }
 
-void ObjectPool::Deallocate(Entity* object)
+void ObjectPool::Deallocate(Bombs* object)
 {
 	object->SetActive(false);
 }

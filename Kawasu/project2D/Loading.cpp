@@ -1,5 +1,6 @@
 #include "Loading.h"
 #include "Define.h"
+#include "StateMachine.h"
 
 //--------------------------------------------------------------------------------------
 // Default Constructor
@@ -7,6 +8,7 @@
 Loading::Loading()
 {
 	m_Loading = new Texture("./textures/loading.png");
+	m_nTimer = (rand() % 3) + 1;
 }
 
 //--------------------------------------------------------------------------------------
@@ -29,6 +31,12 @@ void Loading::OnEnter()
 //--------------------------------------------------------------------------------------
 void Loading::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
+	m_nTimer += (int)deltaTime;
+
+	if (m_nTimer > 3)
+	{
+		stateMachine->PushState(E_GAMESCENE);
+	}
 }
 
 //--------------------------------------------------------------------------------------

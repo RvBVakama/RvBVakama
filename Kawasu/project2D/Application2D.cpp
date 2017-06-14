@@ -37,12 +37,12 @@ bool Application2D::startup() {
 
 	m_Splash = new Splash();
 
-	m_StateMachine->AddState(E_GAMESCENE, m_BG);
-	m_StateMachine->AddState(E_MENUPAUSE, m_MenuPause);
-	m_StateMachine->AddState(E_LOADING, m_Loading);
-	m_StateMachine->AddState(E_SPLASH, m_Splash);
+	m_StateMachine->RegisterState(E_GAMESCENE, m_BG);
+	m_StateMachine->RegisterState(E_MENUPAUSE, m_MenuPause);
+	m_StateMachine->RegisterState(E_LOADING, m_Loading);
+	m_StateMachine->RegisterState(E_SPLASH, m_Splash);
 
-	m_StateMachine->SetState(E_SPLASH);
+	m_StateMachine->PushState(E_SPLASH);
 
 	m_cameraX = 0;
 	m_cameraY = 0;
@@ -83,8 +83,6 @@ void Application2D::update(float deltaTime) {
 	// example of audio
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
 		m_audio->play();
-
-	//m_MenuPause->OnUpdate(deltaTime);
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_END))
