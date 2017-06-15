@@ -149,8 +149,10 @@ bool Input::isMouseButtonDown(int inputMouseID) {
 	return m_mouseState[inputMouseID] == DOWN;
 }
 
+//fix pls
+// if mouse button is pressed at all it always thinks it is up even after clicking off
 bool Input::isMouseButtonUp(int inputMouseID) {
-	return m_mouseState[inputMouseID] == UP || m_mouseState[inputMouseID] == JUST_RELEASED;
+	return m_mouseState[inputMouseID] == UP /*|| m_mouseState[inputMouseID] == JUST_RELEASED*/;
 }
 
 bool Input::wasMouseButtonPressed(int inputMouseID) {

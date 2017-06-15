@@ -5,6 +5,7 @@
 #include "MenuPause.h"
 #include "GameScene.h"
 #include "Loading.h"
+#include "Menu.h"
 #include "Splash.h"
 #include "StateMachine.h"
 #include "Define.h"
@@ -35,11 +36,14 @@ bool Application2D::startup() {
 
 	m_Loading = new Loading();
 
+	m_titleMenu = new Menu();
+
 	m_Splash = new Splash();
 
 	m_StateMachine->RegisterState(E_GAMESCENE, m_BG);
 	m_StateMachine->RegisterState(E_MENUPAUSE, m_MenuPause);
 	m_StateMachine->RegisterState(E_LOADING, m_Loading);
+	m_StateMachine->RegisterState(E_TITLEMENU, m_titleMenu);
 	m_StateMachine->RegisterState(E_SPLASH, m_Splash);
 
 	m_StateMachine->PushState(E_SPLASH);
@@ -67,19 +71,6 @@ void Application2D::update(float deltaTime) {
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
-	// use arrow keys to move camera
-	if (input->isKeyDown(aie::INPUT_KEY_UP))
-		m_cameraY += 500.0f * deltaTime;
-
-	if (input->isKeyDown(aie::INPUT_KEY_DOWN))
-		m_cameraY -= 500.0f * deltaTime;
-
-	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
-		m_cameraX -= 500.0f * deltaTime;
-
-	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
-		m_cameraX += 500.0f * deltaTime;
-	
 	// example of audio
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
 		m_audio->play();

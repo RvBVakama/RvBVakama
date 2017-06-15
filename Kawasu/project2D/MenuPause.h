@@ -10,14 +10,6 @@ using namespace aie;
 
 class MenuPause : public BaseState
 {
-	enum MenuSelector
-	{
-		E_RESUME,
-		E_DONATE,
-		E_EXIT,
-		E_NONE
-	};
-
 public:
 	MenuPause();
 	~MenuPause();
@@ -33,8 +25,16 @@ public:
 	void OnExit();
 	
 private:
+	enum MenuSelector
+	{
+		E_RESUME,
+		E_DONATE,
+		E_EXIT,
+		E_NONE
+	};
+	MenuSelector nMenuNo;
+
 	Vector2 m_pos;
 	Texture* m_MenuPause;
 	Texture* m_MenuSelect;
-	MenuSelector nMenuNo;
 };

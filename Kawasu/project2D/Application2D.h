@@ -7,6 +7,7 @@ class StateMachine;
 class MenuPause;
 class GameScene;
 class Loading;
+class Menu;
 class Splash;
 
 class Application2D : public aie::Application {
@@ -25,6 +26,7 @@ private:
 	MenuPause* m_MenuPause;
 	GameScene* m_BG;
 	Loading* m_Loading;
+	Menu* m_titleMenu;
 	Splash* m_Splash;
 
 	aie::Renderer2D*	m_2dRenderer;

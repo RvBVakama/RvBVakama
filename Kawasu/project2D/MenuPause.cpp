@@ -50,6 +50,7 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	{
 		nMenuNo = E_EXIT;
 		printf("exit");
+		//quit
 	}
 	
 	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
