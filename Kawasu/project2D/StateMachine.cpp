@@ -23,7 +23,7 @@ void StateMachine::Update(float fDetaTime)
 	_ASSERT(m_Stack.Size() >= 0);
 	if (m_Stack.Size() < 0)
 		return;
-
+	
 	m_Stack.Top()->OnUpdate(fDetaTime, this);
 }
 

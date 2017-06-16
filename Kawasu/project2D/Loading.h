@@ -52,5 +52,6 @@ public:
 private:
 	//the Laoding Screen texture
 	aie::Texture* m_Loading;
-	int m_nTimer;
+	float m_nTimer;
+	float randTime;
 };

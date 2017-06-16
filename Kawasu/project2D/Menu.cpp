@@ -44,9 +44,7 @@ void Menu::OnUpdate(float deltaTime, StateMachine* stateMachine)
 			nMenuNo = E_BEGIN;
 
 		if (input->isMouseButtonUp(INPUT_MOUSE_BUTTON_LEFT))
-			stateMachine->PushState(E_GAMESCENE);
-
-		printf("resume");
+			stateMachine->PushState(E_LOADING);
 	}
 
 	if (fMouseX > 364 && fMouseX < 672 && fMouseY > 83 && fMouseY < 177)

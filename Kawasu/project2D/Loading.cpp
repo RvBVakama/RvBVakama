@@ -8,7 +8,8 @@
 Loading::Loading()
 {
 	m_Loading = new Texture("./textures/loading.png");
-	m_nTimer = (rand() % 3) + 1;
+	randTime = 1.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (5.0f - 1.0f)));
+	m_nTimer = 0.0f;
 }
 
 //--------------------------------------------------------------------------------------
@@ -31,9 +32,9 @@ void Loading::OnEnter()
 //--------------------------------------------------------------------------------------
 void Loading::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
-	m_nTimer += (int)deltaTime;
+	m_nTimer += deltaTime;
 
-	if (m_nTimer > 3)
+	if (m_nTimer > randTime)
 	{
 		stateMachine->PushState(E_GAMESCENE);
 	}
