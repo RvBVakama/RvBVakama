@@ -16,9 +16,11 @@ StateMachine::~StateMachine()
 
 void StateMachine::Update(float fDetaTime)
 {
+	_ASSERT(m_StateList.Size() > 0);
 	if (m_StateList.Size() <= 0)
 		return;
 
+	_ASSERT(m_Stack.Size() >= 0);
 	if (m_Stack.Size() < 0)
 		return;
 
@@ -27,7 +29,7 @@ void StateMachine::Update(float fDetaTime)
 
 void StateMachine::Draw(Renderer2D * m_2dRenderer)
 {
-
+	_ASSERT(m_StateList.Size() >= 0);
 	if (m_StateList.Size() < 0)
 		return;
 
@@ -40,10 +42,9 @@ void StateMachine::PushState(int nStateIndex)
 	//assert(nStateIndex < m_StateList.Size());
 	if (nStateIndex >= m_StateList.Size())
 		return;
-
 	if (m_Stack.Size() > 0)
 		m_Stack.Top()->OnExit();
-
+	
 	m_Stack.Push(m_StateList[nStateIndex]);
 
 	m_Stack.Top()->OnEnter();

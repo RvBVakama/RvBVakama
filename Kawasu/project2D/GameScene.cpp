@@ -36,7 +36,9 @@ void GameScene::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	Input* input = Input::getInstance();
 
 	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
+	{
 		stateMachine->PushState(E_MENUPAUSE);
+	}
 }
 
 //--------------------------------------------------------------------------------------

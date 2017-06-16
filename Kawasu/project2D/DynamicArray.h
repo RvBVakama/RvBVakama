@@ -9,6 +9,7 @@ public:
 	DynamicArray(int initialSize = 0)
 	{
 		int nCapacity = initialSize;
+		_ASSERT(nCapacity = 10);
 		if (nCapacity <= 0)
 			nCapacity = 1;
 
@@ -35,6 +36,8 @@ public:
 
 	void PushBack(T value)
 	{
+		//broken? spam pause menu
+		_ASSERT(m_nUsed < m_nCapacity);
 		if (m_nUsed >= m_nCapacity)
 			Resize();
 		m_pData[m_nUsed] = value;
@@ -52,7 +55,7 @@ public:
 
 			if (index > m_nUsed)
 			return;
-
+			_ASSERT(m_nUsed < m_nCapacity);
 		if (m_nUsed >= m_nCapacity)
 			Resize();
 
@@ -69,7 +72,8 @@ public:
 
 	T PopBack()
 	{
-		_ASSERT();
+		_ASSERT(m_nUsed > 0);
+
 		if (m_nUsed <= 0)
 			return 0;
 
@@ -79,6 +83,8 @@ public:
 
 	T Remove(int index)
 	{
+		_ASSERT(index <= m_nUsed);
+
 		if (index >= m_nUsed)
 			return 0;
 		//Back value that we are removing from array
@@ -108,6 +114,7 @@ public:
 	void Shrink()
 	{
 		int nCapacity = m_nUsed;
+		_ASSERT(nCapacity > 0);
 		if (nCapacity <= 0)
 			nCapacity = 1;
 
@@ -120,6 +127,7 @@ public:
 
 	T operator[](const int index)
 	{
+		_ASSERT(index < m_nUsed);
 		if (index >= m_nUsed)
 			return m_NullValue;
 

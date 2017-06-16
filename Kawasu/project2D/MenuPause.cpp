@@ -30,7 +30,7 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 
 	nMenuNo = E_NONE;
 
-	if (fMouseX > 320 && fMouseX < 726 && fMouseY > 450 && fMouseY < 524)
+	if (fMouseX > 320 && fMouseX < 726 && fMouseY > 466 && fMouseY < 540)
 	{
 		nMenuNo = E_RESUME;
 
@@ -40,13 +40,13 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 		printf("resume");
 	}
 	
-	if (fMouseX > 310 && fMouseX < 730 && fMouseY > 330 && fMouseY < 450)
+	if (fMouseX > 310 && fMouseX < 730 && fMouseY > 346 && fMouseY < 466)
 	{
 		nMenuNo = E_DONATE;
 		printf("donate");
 	}
 
-	if (fMouseX > 380 && fMouseX < 658 && fMouseY > 240 && fMouseY < 330)
+	if (fMouseX > 380 && fMouseX < 658 && fMouseY > 256 && fMouseY < 332)
 	{
 		nMenuNo = E_EXIT;
 		printf("exit");
@@ -66,15 +66,15 @@ void MenuPause::OnDraw(Renderer2D * m_2dRenderer)
 	switch (nMenuNo)
 	{
 	case E_RESUME:
-		m_2dRenderer->drawSprite(m_MenuSelect, m_pos.x, m_pos.y - (-100), 0, 0, 0, 0);
+		m_2dRenderer->drawSprite(m_MenuSelect, m_pos.x, m_pos.y - (-112), 0, 0, 0, 0);
 		printf("tex");
 		break;
 	case E_DONATE:
-		m_2dRenderer->drawSprite(m_MenuSelect, m_pos.x, m_pos.y - 12, 0, 0, 0, 0);
+		m_2dRenderer->drawSprite(m_MenuSelect, m_pos.x, m_pos.y, 0, 0, 0, 0);
 		printf("tex");
 		break;
 	case E_EXIT:
-		m_2dRenderer->drawSprite(m_MenuSelect, m_pos.x, m_pos.y - 135, 0, 0, 0, 0);
+		m_2dRenderer->drawSprite(m_MenuSelect, m_pos.x, m_pos.y - 123, 0, 0, 0, 0);
 		printf("tex");
 		break;
 

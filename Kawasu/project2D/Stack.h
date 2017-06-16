@@ -42,6 +42,6 @@ public:
 		int nTop = m_pData.Size() - 1;
 		return m_pData[nTop];
 	}
-
+	
 	DynamicArray<T> m_pData;
 };

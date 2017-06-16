@@ -10,6 +10,8 @@
 #include "StateMachine.h"
 #include "Define.h"
 
+//#include "ResourceManager.h"
+
 Application2D::Application2D() {
 
 }
@@ -19,6 +21,12 @@ Application2D::~Application2D() {
 }
 
 bool Application2D::startup() {
+	
+	//ResourceManager<aie::Texture> m_images;
+	//ResourceManager<aie::Font, int> m_fonts;
+	//
+	//m_std::shared_ptr<aie::Font> font = m_fonts.get("./font/consolas.ttf", 32);
+	//m_std::shared_ptr<aie::Texture> grass = m_images.get("./textures/grass.png");
 	
 	m_2dRenderer = new aie::Renderer2D();
 
@@ -80,7 +88,6 @@ void Application2D::update(float deltaTime) {
 		quit();
 
 	m_StateMachine->Update(deltaTime);
-
 }
 
 void Application2D::draw() {
