@@ -49,6 +49,8 @@ public:
 	//optional extra to deinitialize anything you need to
 	void OnExit();
 
+	bool bDrawLowerState;
+
 private:
 	//the GameScene texture
 	aie::Texture* m_BG;

@@ -14,10 +14,12 @@ public:
 
 	void Update(float fDetaTime);
 	void Draw(Renderer2D* m_2dRenderer);
+	void Draw2ndFromTop(Renderer2D* m_2dRenderer);
 	void PushState(int nStateIndex);
 	void RegisterState(int nStateIndex, BaseState* pState);
 	void PopState();
-	
+	bool bDrawLowerState;
+
 private:
 	DynamicArray<BaseState*> m_StateList;
 	Stack<BaseState*> m_Stack;

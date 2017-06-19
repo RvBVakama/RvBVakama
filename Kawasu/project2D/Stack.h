@@ -43,5 +43,11 @@ public:
 		return m_pData[nTop];
 	}
 
+	T SecondFromTop()
+	{
+		int nTop2 = m_pData.Size() - 2;
+		return m_pData[nTop2];
+	}
+
 	DynamicArray<T> m_pData;
 };

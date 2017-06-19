@@ -48,11 +48,11 @@ bool Application2D::startup() {
 
 	m_Splash = new Splash();
 
+	m_StateMachine->RegisterState(E_SPLASH, m_Splash);
+	m_StateMachine->RegisterState(E_TITLEMENU, m_titleMenu);
+	m_StateMachine->RegisterState(E_LOADING, m_Loading);
 	m_StateMachine->RegisterState(E_GAMESCENE, m_BG);
 	m_StateMachine->RegisterState(E_MENUPAUSE, m_MenuPause);
-	m_StateMachine->RegisterState(E_LOADING, m_Loading);
-	m_StateMachine->RegisterState(E_TITLEMENU, m_titleMenu);
-	m_StateMachine->RegisterState(E_SPLASH, m_Splash);
 
 	m_StateMachine->PushState(E_SPLASH);
 

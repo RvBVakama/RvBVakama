@@ -4,6 +4,7 @@
 
 StateMachine::StateMachine()
 {
+	bDrawLowerState = false;
 }
 
 StateMachine::~StateMachine()
@@ -34,6 +35,18 @@ void StateMachine::Draw(Renderer2D * m_2dRenderer)
 		return;
 
 	m_Stack.Top()->OnDraw(m_2dRenderer);
+
+	if (bDrawLowerState)
+		Draw2ndFromTop(m_2dRenderer);
+}
+
+void StateMachine::Draw2ndFromTop(Renderer2D * m_2dRenderer)
+{
+	_ASSERT(m_StateList.Size() >= 0);
+	if (m_StateList.Size() < 0)
+		return;
+
+	m_Stack.SecondFromTop()->OnDraw(m_2dRenderer);
 }
 
 void StateMachine::PushState(int nStateIndex)
@@ -57,5 +70,6 @@ void StateMachine::RegisterState(int nStateIndex, BaseState* pState)
 
 void StateMachine::PopState()
 {
-
+	if (m_Stack.Size() > 0)
+		m_Stack.Pop();
 }

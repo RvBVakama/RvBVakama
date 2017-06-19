@@ -8,7 +8,7 @@
 Loading::Loading()
 {
 	m_Loading = new Texture("./textures/loading.png");
-	randTime = 1.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (5.0f - 1.0f)));
+	randTime = (float)(rand()%200) / 100 + 1.0f;
 	m_nTimer = 0.0f;
 }
 

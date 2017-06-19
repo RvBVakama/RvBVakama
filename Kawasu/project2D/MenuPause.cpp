@@ -35,7 +35,10 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 		nMenuNo = E_RESUME;
 
 		if (input->wasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
-				stateMachine->PushState(E_GAMESCENE);
+		{
+			stateMachine->PopState();
+			stateMachine->bDrawLowerState = false;			
+		}
 
 		printf("resume");
 	}
@@ -55,7 +58,8 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	
 	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
 	{
-			stateMachine->PushState(E_GAMESCENE);
+			stateMachine->PopState();
+			stateMachine->bDrawLowerState = false;
 	}
 }
 

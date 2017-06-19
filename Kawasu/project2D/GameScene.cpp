@@ -11,6 +11,7 @@ using namespace aie;
 GameScene::GameScene()
 {
 	m_BG = new Texture("./textures/bg.png");
+	bDrawLowerState = false;
 }
 
 //--------------------------------------------------------------------------------------
@@ -38,6 +39,8 @@ void GameScene::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
 	{
 		stateMachine->PushState(E_MENUPAUSE);
+
+		stateMachine->bDrawLowerState = true;
 	}
 }
 
