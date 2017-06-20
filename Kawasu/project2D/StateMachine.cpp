@@ -1,5 +1,4 @@
 #include "StateMachine.h"
-#include <assert.h>
 #include <crtdbg.h>
 
 StateMachine::StateMachine()
@@ -52,7 +51,6 @@ void StateMachine::Draw2ndFromTop(Renderer2D * m_2dRenderer)
 void StateMachine::PushState(int nStateIndex)
 {
 	_ASSERT(nStateIndex < m_StateList.Size());
-	//assert(nStateIndex < m_StateList.Size());
 	if (nStateIndex >= m_StateList.Size())
 		return;
 	if (m_Stack.Size() > 0)

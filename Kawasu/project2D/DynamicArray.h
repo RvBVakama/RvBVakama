@@ -9,7 +9,6 @@ public:
 	DynamicArray(int initialSize = 0)
 	{
 		int nCapacity = initialSize;
-		_ASSERT(nCapacity = 10);
 		if (nCapacity <= 0)
 			nCapacity = 1;
 
@@ -36,8 +35,6 @@ public:
 
 	void PushBack(T value)
 	{
-		//broken? spam pause menu
-		_ASSERT(m_nUsed < m_nCapacity);
 		if (m_nUsed >= m_nCapacity)
 			Resize();
 		m_pData[m_nUsed] = value;
@@ -53,9 +50,9 @@ public:
 	{
 		_ASSERT(index <= m_nUsed);
 
-			if (index > m_nUsed)
+		if (index > m_nUsed)
 			return;
-			_ASSERT(m_nUsed < m_nCapacity);
+
 		if (m_nUsed >= m_nCapacity)
 			Resize();
 
