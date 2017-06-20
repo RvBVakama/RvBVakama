@@ -7,12 +7,38 @@ class Iter
 	ListNode<T>* current;
 
 public:
+
 	//=
 	Iter& operator=(ListNode<T>* other)
 	{
 		//LinkedList<int> other1;
 		current = other;
 		return this;
+	}
+
+	//!=
+	bool operator!=(ListNode<T>* other)
+	{
+		if (current != other)
+			return true;
+		else
+			return false;
+	}
+
+	//==
+	bool operator!=(ListNode<T>* other)
+	{
+		if (current == other)
+			return true;
+		else
+			return false;
+	}
+
+	//->
+	Iter& operator->(ListNode<T>* other)
+	{
+		current
+
 	}
 
 	//++
@@ -89,7 +115,7 @@ public:
 
 	ListNode<T>* End()
 	{
-		return end;
+		return end->prev;
 	}
 
 	ListNode<T>* first()

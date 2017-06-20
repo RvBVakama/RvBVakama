@@ -1,7 +1,6 @@
 #include "Application2D.h"
 #include <iostream>
 #include <time.h>
-
 #include "LinkedList.h"
 
 int main() {
