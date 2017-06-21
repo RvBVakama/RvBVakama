@@ -9,6 +9,8 @@ class GameScene;
 class Loading;
 class Menu;
 class Splash;
+class ObjectPool;
+class Bombs;
 
 class Application2D : public aie::Application {
 public:
@@ -28,6 +30,8 @@ private:
 	Loading* m_Loading;
 	Menu* m_titleMenu;
 	Splash* m_Splash;
+	ObjectPool* m_BombObj;
+	Bombs* m_Bomb;
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Texture*		m_texture;

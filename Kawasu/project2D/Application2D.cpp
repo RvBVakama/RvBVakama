@@ -9,8 +9,10 @@
 #include "Splash.h"
 #include "StateMachine.h"
 #include "ResourceManager.h"
+#include "CollisionManager.h"
 #include "Define.h"
-#include "Texture.h"
+//#include "Texture.h"
+#include "ObjectPool.h"
 
 Application2D::Application2D() {
 
@@ -20,15 +22,13 @@ Application2D::~Application2D() {
 
 }
 
-bool Application2D::startup() {
-	
-	//ResourceManager<aie::Texture> m_images;
-	//ResourceManager<aie::Font, int> m_fonts;
-	//
-	//m_std::shared_ptr<aie::Font> font = m_fonts.get("./font/consolas.ttf", 32);
-	//m_std::shared_ptr<aie::Texture> grass = m_images.get("./textures/grass.png");
-	
+bool Application2D::startup() 
+{
 	m_2dRenderer = new aie::Renderer2D();
+
+	CollisionManager::Create();
+
+	CollisionManager* pPtr = CollisionManager::GetInstance();
 
 	m_texture = new aie::Texture("./textures/numbered_grid.tga");
 
@@ -50,6 +50,10 @@ bool Application2D::startup() {
 
 	m_Splash = new Splash();
 
+	m_BombObj = new ObjectPool(1024);
+
+	m_Bomb = m_BombObj->Allocate();
+
 	m_StateMachine->RegisterState(E_SPLASH, m_Splash);
 	m_StateMachine->RegisterState(E_TITLEMENU, m_titleMenu);
 	m_StateMachine->RegisterState(E_LOADING, m_Loading);
@@ -60,12 +64,12 @@ bool Application2D::startup() {
 
 	m_cameraX = 0;
 	m_cameraY = 0;
-	
 	return true;
 }
 
 void Application2D::shutdown() {
 	
+	delete m_Bomb;
 	delete m_Splash;
 	delete m_titleMenu;
 	delete m_Loading;
