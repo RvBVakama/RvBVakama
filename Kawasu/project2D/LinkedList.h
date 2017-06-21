@@ -1,5 +1,6 @@
 #pragma once
 #include "ListNode.h"
+#include <crtdbg.h>
 
 template <typename T>
 class Iter
@@ -13,7 +14,7 @@ public:
 	{
 		//LinkedList<int> other1;
 		current = other;
-		return this;
+		return *this;
 	}
 
 	//!=
@@ -26,7 +27,7 @@ public:
 	}
 
 	//==
-	bool operator!=(ListNode<T>* other)
+	bool operator==(ListNode<T>* other)
 	{
 		if (current == other)
 			return true;
@@ -35,29 +36,22 @@ public:
 	}
 
 	//->
-	Iter& operator->(ListNode<T>* other)
+	T value()
 	{
-		current
-
+		return current->data;
 	}
 
 	//++
-	//Iter operator ++ (Iter & other)
-	//{
-	//	return
-	//}
+	void operator++()
+	{
+		current = current->next;
+	}
 
-	////--
-	//Iter operator -- (Iter & other)
-	//{
-	//	return
-	//}
-
-	////*
-	//Iter operator * (Iter & other)
-	//{
-	//	return
-	//}
+	//--
+	void operator--()
+	{
+		current = current->prev;
+	}
 };
 
 template <typename T>
@@ -103,10 +97,17 @@ public:
 		node->next = end;
 	}
 
-	/*Iter insert(m_Iterator, T data)
+	void insert(ListNode<T>* node)
 	{
+		ListNode<T>* firstNode = node;
+		ListNode<T>* lastNode = node->next;
+		ListNode<T>* newNode = new ListNode<T>*;
 
-	}*/
+		firstNode = newNode->prev;
+		LastNode = newNode->next;
+
+		//delete node;
+	}
 
 	ListNode<T>* Begin()
 	{
@@ -120,48 +121,89 @@ public:
 
 	ListNode<T>* first()
 	{
-		
+		_ASSERT(start->next != end)
+		return start->next->data;
 	}
 
-	/*Last()
+	ListNode<T>* Last()
 	{
-
+		_ASSERT(end->prev != start)
+			return end->prev->data;
 	}
 
-	Count()
+	int Count()
 	{
+		int m_count = 0;
 
+		ListNode<T>* current = start->next;
+
+		while (current != end)
+		{
+			++current;
+			++m_count;
+		}
+
+		return m_count;
 	}
 
-	Erase()
+	ListNode<T>* Delete(ListNode<T>* node)
 	{
+		ListNode<T>* prevNode = node->prev;
+		ListNode<T>* nextNode = node->next;
 
+		prevNode->next = nextNode;
+		nextNode->prev = prevNode;
+
+		delete node;
+
+		return nextNode;
 	}
 
-	Remove()
+	void Erase(Iter<T> & target)
 	{
-
+		target.current = Delete(target.current);
 	}
 
-	PopBack()
+	void Remove(T value)
 	{
+		ListNode<T>* current = start->next;
 
+		while (current != end)
+		{
+			if (current.data == value)
+			{
+				current = Delete(current);
+			}
+
+			else
+			{
+			++current;
+			}
+		}
 	}
 
-	PopFront()
+	void PopBack()
 	{
-
+		_ASSERT(end->prev != start);
+		Delete(end->prev);
 	}
 
-	Empty()
+	void PopFront()
 	{
-
+		_ASSERT(start->next != end);
+		Delete(start->next);
 	}
 
-	Clear()
+	void Clear()
 	{
+		ListNode<T>* current = start->next;
 
-	}*/
+		while (current != end)
+		{
+			current = Delete(current);
+			++current;
+		}
+	}
 
 private:
 	ListNode<T>* start;

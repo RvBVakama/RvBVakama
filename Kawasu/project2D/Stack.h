@@ -9,7 +9,6 @@ public:
 	Stack()
 	{
 		//m_pData = new DynamicArray<T>(initialiseSize);
-
 	}
 	
 	~Stack()

@@ -1,13 +1,15 @@
 #include "Splash.h"
 #include "Define.h"
 #include "StateMachine.h"
+#include "ResourceManager.h"
+#include "Texture.h"
 
 //--------------------------------------------------------------------------------------
 // Default Constructor
 //--------------------------------------------------------------------------------------
 Splash::Splash()
 {
-	m_splash = new Texture("./textures/splash.png");
+	m_splash = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/splash.png");
 	m_fTimer = 0.0f;
 }
 

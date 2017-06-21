@@ -8,10 +8,11 @@ StateMachine::StateMachine()
 
 StateMachine::~StateMachine()
 {
-	for (int i = 0; i < m_StateList.Size(); ++i)
-	{
-		delete m_StateList[i];
-	}
+	m_StateList.Clear();
+	//for (int i = 0; i < m_StateList.Size(); ++i)
+	//{
+	//	delete m_StateList[i];
+	//}
 }
 
 void StateMachine::Update(float fDetaTime)

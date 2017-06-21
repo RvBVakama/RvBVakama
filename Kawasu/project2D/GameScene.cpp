@@ -2,6 +2,8 @@
 #include "Input.h"
 #include "StateMachine.h"
 #include "Define.h"
+#include "ResourceManager.h"
+#include "Texture.h"
 
 using namespace aie;
 
@@ -10,7 +12,7 @@ using namespace aie;
 //--------------------------------------------------------------------------------------
 GameScene::GameScene()
 {
-	m_BG = new Texture("./textures/bg.png");
+	m_BG = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/bg.png");
 	bDrawLowerState = false;
 }
 

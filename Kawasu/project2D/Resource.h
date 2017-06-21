@@ -16,8 +16,11 @@ public:
 
 	~Resource()
 	{
-		delete m_Data;
 		delete[] m_szFilename;
+	}
+
+	void Clear()
+	{
 
 	}
 

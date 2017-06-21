@@ -2,8 +2,11 @@
 #include <iostream>
 #include <time.h>
 #include "LinkedList.h"
+#include <crtdbg.h>
 
-int main() {
+int main() 
+{
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	LinkedList<int> myList;
 	myList.PushFront(3);
@@ -14,12 +17,12 @@ int main() {
 	iter = myList.Begin(); //=
 	while (iter != myList.End()) // != ==
 	{
-		std::cout << iter->value() << std::endl; //value()
+		std::cout << iter.value() << std::endl; //value()
 		++iter; //++ --
 	}
 
 
-	srand(time(NULL));
+	srand((int)time(NULL));
 
 	// allocation
 	auto app = new Application2D();

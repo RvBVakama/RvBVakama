@@ -30,6 +30,7 @@ public:
 		m_nUsed = other.m_nUsed;
 
 		m_pData = new T[m_nCapacity];
+		_ASSERT(m_pData);
 		memcpy(m_pData, other.m_pData, sizeof(T) * m_nCapacity);
 	}
 
@@ -116,6 +117,7 @@ public:
 			nCapacity = 1;
 
 		T* newData = new T[m_nUsed];
+		_ASSERT(newData);
 		memcpy(newData, m_pData, sizeof(T) * m_nUsed);
 		delete m_pData;
 		m_pData = newData;
@@ -150,7 +152,7 @@ private:
 	{
 		//Creates new array that is twice as big
 		T* newData = new T[m_nCapacity * 2];
-
+		_ASSERT(newData);
 		//copy old data acriss ubit new attay
 		memcpy(newData, m_pData, sizeof(T) * m_nCapacity);
 

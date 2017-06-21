@@ -1,13 +1,14 @@
 #include "Loading.h"
 #include "Define.h"
 #include "StateMachine.h"
-
+#include "ResourceManager.h"
+#include "Texture.h" 
 //--------------------------------------------------------------------------------------
 // Default Constructor
 //--------------------------------------------------------------------------------------
 Loading::Loading()
 {
-	m_Loading = new Texture("./textures/loading.png");
+	m_Loading = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/loading.png");
 	randTime = (float)(rand()%200) / 100 + 1.0f;
 	m_nTimer = 0.0f;
 }

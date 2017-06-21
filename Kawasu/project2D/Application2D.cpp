@@ -8,9 +8,9 @@
 #include "Menu.h"
 #include "Splash.h"
 #include "StateMachine.h"
+#include "ResourceManager.h"
 #include "Define.h"
-
-//#include "ResourceManager.h"
+#include "Texture.h"
 
 Application2D::Application2D() {
 
@@ -37,6 +37,8 @@ bool Application2D::startup() {
 	m_audio = new aie::Audio("./audio/powerup.wav");
 
 	m_StateMachine = new StateMachine();
+
+	ResourceManager<Texture>::Create();
 
 	m_BG = new GameScene();
 
@@ -65,9 +67,12 @@ bool Application2D::startup() {
 void Application2D::shutdown() {
 	
 	delete m_Splash;
+	delete m_titleMenu;
 	delete m_Loading;
-	delete m_BG;
 	delete m_MenuPause;
+	delete m_BG;
+	ResourceManager<Texture>::Destroy();
+	delete m_StateMachine;
 	delete m_audio;
 	delete m_font;
 	delete m_texture;

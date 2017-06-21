@@ -2,14 +2,15 @@
 #include "StateMachine.h"
 #include "Define.h"
 #include "Input.h"
-
+#include "ResourceManager.h"
+#include "Texture.h"
 Menu::Menu()
 {
-	m_titleMenu = new Texture("./textures/titleMenu.png");
-	m_buttonBeginUP = new Texture("./textures/buttonBeginUP.png");
-	m_buttonBeginDOWN = new Texture("./textures/buttonBeginDOWN.png");
-	m_buttonExitUP = new Texture("./textures/buttonExitUP.png");
-	m_buttonExitDOWN = new Texture("./textures/buttonExitDOWN.png");
+	m_titleMenu = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/titleMenu.png");
+	m_buttonBeginUP = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/buttonBeginUP.png");
+	m_buttonBeginDOWN = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/buttonBeginDOWN.png");
+	m_buttonExitUP = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/buttonExitUP.png");
+	m_buttonExitDOWN = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/buttonExitDOWN.png");
 
 	m_pos.x = SCREENX / 2;
 	m_pos.y = SCREENY / 2;

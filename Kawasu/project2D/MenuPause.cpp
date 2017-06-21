@@ -1,11 +1,13 @@
 #include "MenuPause.h"
 #include "StateMachine.h"
 #include "Define.h"
+#include "ResourceManager.h"
+#include "Texture.h"
 
 MenuPause::MenuPause()
 {
-	m_MenuPause = new Texture("./textures/pause.png");
-	m_MenuSelect = new Texture("./textures/selector.png");
+	m_MenuPause = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/pause.png");
+	m_MenuSelect = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/selector.png");
 	
 	m_pos.x = SCREENX / 2;
 	m_pos.y = SCREENY / 2;

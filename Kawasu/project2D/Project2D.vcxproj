@@ -196,6 +196,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuPause.h" />
     <ClInclude Include="ObjectPool.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Splash.h" />
     <ClInclude Include="Stack.h" />
