@@ -1,0 +1,4 @@
+﻿  Source.cpp
+d:\git - rvbvakama\kawasu\unittest\unittest\source.cpp(140): error C2248: 'DynamicArray<int>::operator =': cannot access private member declared in class 'DynamicArray<int>'
+  d:\git - rvbvakama\kawasu\unittest\unittest\dynamicarray.h(146): note: see declaration of 'DynamicArray<int>::operator ='
+  d:\git - rvbvakama\kawasu\unittest\unittest\source.cpp(18): note: see declaration of 'DynamicArray<int>'
