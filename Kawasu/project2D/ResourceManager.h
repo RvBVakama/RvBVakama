@@ -22,6 +22,7 @@ public:
 
 		// Resource is not loaded, so load it
 		Resource<T>* pResource = new Resource<T>(szFilename);
+		_ASSERT(pResource);
 		m_ResourceList.PushBack(pResource);
 		return pResource->m_Data;
 	}
@@ -40,6 +41,7 @@ public:
 	{
 		if (!m_pInstance)
 			m_pInstance = new ResourceManager<T>();
+			_ASSERT(m_pInstance);
 	}
 
 	static void Destroy()

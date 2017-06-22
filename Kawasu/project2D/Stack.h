@@ -5,12 +5,11 @@ template <typename T>
 class Stack
 {
 public:
-
 	Stack()
 	{
 		//m_pData = new DynamicArray<T>(initialiseSize);
 	}
-	
+
 	~Stack()
 	{
 		//delete m_pData;

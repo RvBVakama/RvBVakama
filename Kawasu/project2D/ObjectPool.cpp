@@ -6,7 +6,7 @@ ObjectPool::ObjectPool(int nMaxSize)
 	m_nMaxSize = nMaxSize;
 	for (int i = 0; i < nMaxSize; ++i)
 	{
-		m_pData.PushBack(new Bombs(Vector2(100, 100), Vector2(-18, -24), Vector2(18, 24)));
+		m_pData.PushBack(new Bombs());
 	}
 }
 

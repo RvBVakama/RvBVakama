@@ -15,8 +15,6 @@ MenuPause::MenuPause()
 
 MenuPause::~MenuPause()
 {
-	delete m_MenuSelect;
-	delete m_MenuPause;
 }
 
 void MenuPause::OnEnter()
@@ -67,6 +65,7 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 
 void MenuPause::OnDraw(Renderer2D * m_2dRenderer)
 {
+	_ASSERT(m_2dRenderer);
 	m_2dRenderer->drawSprite(m_MenuPause, m_pos.x, m_pos.y, 0, 0, 0, 1);
 
 	switch (nMenuNo)

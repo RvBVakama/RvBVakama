@@ -18,7 +18,6 @@ Loading::Loading()
 //--------------------------------------------------------------------------------------
 Loading::~Loading()
 {
-	delete m_Loading;
 }
 
 void Loading::OnEnter()

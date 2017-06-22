@@ -5,7 +5,12 @@
 
 #include "Texture.h"
 #include "Renderer2d.h"
+#include "DynamicArray.h"
 #include "BaseState.h"
+
+class ObjectPool;
+//class DynamicArray;
+class Bombs;
 
 using namespace aie;
 
@@ -54,4 +59,9 @@ public:
 private:
 	//the GameScene texture
 	aie::Texture* m_BG;
+	ObjectPool* m_BombPool;
+	DynamicArray<Bombs*> m_BombArray;
+	Bombs* m_Bomb;
+
+	bool bBombSpawned;
 };

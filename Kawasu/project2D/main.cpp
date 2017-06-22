@@ -26,7 +26,7 @@ int main()
 
 	// allocation
 	auto app = new Application2D();
-	
+	_ASSERT(app);
 	// initialise and loop
 	app->run("AIE", 1036, 800, false);
 

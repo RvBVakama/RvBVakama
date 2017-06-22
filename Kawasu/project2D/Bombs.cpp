@@ -8,16 +8,27 @@
 
 //--------------------------------------------------------------------------------------
 // Default Constructor
+// -------------------------------------------------------------------------------------
+Bombs::Bombs()
+{
+	CollisionManager::GetInstance()->AddObject(this);
+
+	//sets the correct texture based on the input filename
+	m_BombTexture = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/bomb.png");
+
+	UpdateTransforms();
+
+	//Can kill players
+	bCanKill = true;
+}
+
+//--------------------------------------------------------------------------------------
+// Default Constructor
 // 
 // Param:
 //		pos: The position of the borders.
 //		TL: Top left pixel to set the collision area.
 //		BR:	Bottom right pixel to set the collision area.
-//		filename: Pass in the path to set the spike direction.
-//					Up = "./textures/spikeup.png"
-//					Down = "./textures/spikedown.png"
-//					Left = "./textures/spikeleft.png"
-//					Right = "./textures/spikeRight.png"
 //--------------------------------------------------------------------------------------
 Bombs::Bombs(Vector2 pos, Vector2 TL, Vector2 BR)
 {
@@ -52,6 +63,34 @@ Bombs::Bombs(Vector2 pos, Vector2 TL, Vector2 BR)
 Bombs::~Bombs()
 {
 	//delete m_BombTexture;
+}
+
+//--------------------------------------------------------------------------------------
+// Set the bomb's position
+// 
+// Param:
+//		pos: The position of the borders.
+//		TL: Top left pixel to set the collision area.
+//		BR:	Bottom right pixel to set the collision area.
+//--------------------------------------------------------------------------------------
+void Bombs::setPos(Vector2 pos, Vector2 TL, Vector2 BR)
+{
+	//Settings the collision area
+	m_Collider.m_TL = Vector2(TL); //-18, -24
+	m_Collider.m_BR = Vector2(BR); //-18, -24
+
+	//creating a matrix 3d to store the position of the platform in
+	Matrix3 temppos;
+
+	//putting the position values into the matrix
+	temppos.SetPos(pos);
+
+	//updating the players position by multiplying the current player matrix(localTransform)
+	//by the temppose matrix
+	localTransform = localTransform * temppos;
+
+	UpdateTransforms();
+
 }
 
 //--------------------------------------------------------------------------------------

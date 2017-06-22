@@ -11,7 +11,6 @@
 #include "ResourceManager.h"
 #include "CollisionManager.h"
 #include "Define.h"
-//#include "Texture.h"
 #include "ObjectPool.h"
 
 Application2D::Application2D() {
@@ -25,34 +24,37 @@ Application2D::~Application2D() {
 bool Application2D::startup() 
 {
 	m_2dRenderer = new aie::Renderer2D();
+	_ASSERT(m_2dRenderer);
 
 	CollisionManager::Create();
 
 	CollisionManager* pPtr = CollisionManager::GetInstance();
 
-	m_texture = new aie::Texture("./textures/numbered_grid.tga");
-
 	m_font = new aie::Font("./font/consolas.ttf", 32);
+	_ASSERT(m_font);
 
 	m_audio = new aie::Audio("./audio/powerup.wav");
+	_ASSERT(m_audio);
 
 	m_StateMachine = new StateMachine();
+	_ASSERT(m_StateMachine);
 
 	ResourceManager<Texture>::Create();
 
 	m_BG = new GameScene();
+	_ASSERT(m_BG);
 
 	m_MenuPause = new MenuPause();
+	_ASSERT(m_MenuPause);
 
 	m_Loading = new Loading();
+	_ASSERT(m_Loading);
 
 	m_titleMenu = new Menu();
+	_ASSERT(m_titleMenu);
 
 	m_Splash = new Splash();
-
-	m_BombObj = new ObjectPool(1024);
-
-	m_Bomb = m_BombObj->Allocate();
+	_ASSERT(m_Splash);
 
 	m_StateMachine->RegisterState(E_SPLASH, m_Splash);
 	m_StateMachine->RegisterState(E_TITLEMENU, m_titleMenu);
@@ -69,7 +71,6 @@ bool Application2D::startup()
 
 void Application2D::shutdown() {
 	
-	delete m_Bomb;
 	delete m_Splash;
 	delete m_titleMenu;
 	delete m_Loading;
@@ -79,7 +80,7 @@ void Application2D::shutdown() {
 	delete m_StateMachine;
 	delete m_audio;
 	delete m_font;
-	delete m_texture;
+	CollisionManager::Destroy();
 	delete m_2dRenderer;
 }
 

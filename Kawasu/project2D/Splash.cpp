@@ -18,7 +18,6 @@ Splash::Splash()
 //--------------------------------------------------------------------------------------
 Splash::~Splash()
 {
-	delete m_splash;
 }
 
 void Splash::OnEnter()

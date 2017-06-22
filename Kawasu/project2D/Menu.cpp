@@ -18,11 +18,6 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-	delete m_titleMenu;
-	delete m_buttonBeginUP;
-	delete m_buttonBeginDOWN;
-	delete m_buttonExitUP;
-	delete m_buttonExitDOWN;
 }
 
 void Menu::OnEnter()

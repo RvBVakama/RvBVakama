@@ -1,7 +1,6 @@
 #pragma once
 #include <memory.h>
 #include <crtdbg.h>
-
 template <typename T>
 class DynamicArray
 {
@@ -124,7 +123,7 @@ public:
 		m_nCapacity = m_nUsed;
 	}
 
-	T operator[](const int index)
+	T& operator[](const int index)
 	{
 		_ASSERT(index < m_nUsed);
 		if (index >= m_nUsed)

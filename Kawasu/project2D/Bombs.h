@@ -18,6 +18,12 @@ using namespace aie;
 class Bombs : public Entity
 {
 public:
+
+	//--------------------------------------------------------------------------------------
+	// Default Constructor
+	// -------------------------------------------------------------------------------------
+	Bombs();
+	
 	//--------------------------------------------------------------------------------------
 	// Default Constructor
 	// 
@@ -25,18 +31,23 @@ public:
 	//		pos: The position of the borders.
 	//		TL: Top left pixel to set the collision area.
 	//		BR:	Bottom right pixel to set the collision area.
-	//		filename: Pass in the path to set the spike direction.
-	//					Up = "./textures/spikeup.png"
-	//					Down = "./textures/spikedown.png"
-	//					Left = "./textures/spikeleft.png"
-	//					Right = "./textures/spikeRight.png"
 	//--------------------------------------------------------------------------------------
 	Bombs(Vector2 pos, Vector2 TL, Vector2 BR);
-
+	
 	//--------------------------------------------------------------------------------------
 	// Default Destructor
 	//--------------------------------------------------------------------------------------
 	~Bombs();
+
+	//--------------------------------------------------------------------------------------
+	// Set the bomb's position
+// 
+// Param:
+//		pos: The position of the borders.
+//		TL: Top left pixel to set the collision area.
+//		BR:	Bottom right pixel to set the collision area.
+	//--------------------------------------------------------------------------------------
+	void setPos(Vector2 pos, Vector2 TL, Vector2 BR);
 
 	//--------------------------------------------------------------------------------------
 	// Prints "Crash" if something touches the spike.

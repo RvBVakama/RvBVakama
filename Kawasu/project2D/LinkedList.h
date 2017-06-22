@@ -62,7 +62,9 @@ public:
 	LinkedList()
 	{
 		start = new ListNode<T>();
+		_ASSERT(start);
 		end = new ListNode<T>();
+		_ASSERT(end);
 
 		start->next = end;
 		end->prev = start;
@@ -80,6 +82,7 @@ public:
 	void PushFront(T data)
 	{
 		ListNode<T>* node = new ListNode<T>();
+		_ASSERT(node);
 		node->data = data;
 		node->next = start->next;
 		start->next->prev = node;
@@ -90,6 +93,7 @@ public:
 	void PushBack(T data)
 	{
 		ListNode<T>* node = new ListNode<T>();
+		_ASSERT(node);
 		node->data = data;
 		node->prev = end->prev;
 		end->prev->next = node;
@@ -102,6 +106,7 @@ public:
 		ListNode<T>* firstNode = node;
 		ListNode<T>* lastNode = node->next;
 		ListNode<T>* newNode = new ListNode<T>*;
+		_ASSERT(newNode);
 
 		firstNode = newNode->prev;
 		LastNode = newNode->next;
@@ -116,7 +121,7 @@ public:
 
 	ListNode<T>* End()
 	{
-		return end->prev;
+		return end;
 	}
 
 	ListNode<T>* first()
