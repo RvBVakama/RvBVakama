@@ -5,7 +5,7 @@ template <typename T>
 class Stack
 {
 public:
-	Stack()
+	Stack(int initialsize = 0)
 	{
 		//m_pData = new DynamicArray<T>(initialiseSize);
 	}
@@ -48,9 +48,4 @@ public:
 	}
 
 	DynamicArray<T> m_pData;
-
-private:
-	//DynamicArray& operator= (const DynamicArray& other) = default;
-	//DynamicArray(DynamicArray&& other) = default;
-	//DynamicArray& operator= (DynamicArray&& other) = default;
 };

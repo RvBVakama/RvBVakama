@@ -141,12 +141,12 @@ public:
 		return m_nCapacity;
 	}
 
-private:
-
 	DynamicArray& operator= (const DynamicArray& other) = default;
 	DynamicArray(DynamicArray&& other) = default;
 	DynamicArray& operator= (DynamicArray&& other) = default;
 
+private:
+	
 	void Resize()
 	{
 		//Creates new array that is twice as big

@@ -30,6 +30,7 @@ void TestDynamicArray()
 
 	myArray.PushFront(1);
 
+
 	cout << "Sizes are" << endl;
 	cout << "Used is: " << myArray.Size() << endl;
 	cout << "Capacity is: " << myArray.Capacity() << endl;
@@ -40,58 +41,68 @@ void TestDynamicArray()
 		cout << myArray[i] << endl;
 	}
 
-	myArray.Insert(1, 4);
-
-	cout << endl << "Values are" << endl;
-	for (int i = 0; i < myArray.Size(); ++i)
-	{
-		cout << myArray[i] << endl;
-
-	}
+	printf("\n----------------------------------------------------\n");
 
 	int value = myArray.PopBack();
-	cout << endl << "Values popped " << value << endl;
-	cout << "Values are" << endl;
+	printf("\nPopping last value\n");
+	cout << endl << "Value popped\n" << value << endl;
+	cout << "\nValues are" << endl;
 	for (int i = 0; i < myArray.Size(); ++i)
 	{
 		cout << myArray[i] << endl;
 	}
+
+	printf("\n----------------------------------------------------\n");
+
+	printf("\nRemoving a value\n");
 
 	value = myArray.Remove(3);
-	cout << endl << "Values removed were " << value << endl;
-	cout << "Values are" << endl;
+	cout << endl << "Value removed\n" << value << endl;
+	cout << "\nValues are" << endl;
 	for (int i = 0; i < myArray.Size(); ++i)
 	{
 		cout << myArray[i] << endl;
 	}
 
+	printf("\n----------------------------------------------------\n");
+
+	printf("\nPopping a value\n");
+	
 	value = myArray.PopFront();
-	cout << endl << "Values popped were " << value << endl;
-	cout << "Values are" << endl;
+	cout << endl << "Value popped\n" << value << endl;
+	cout << "\nValues are" << endl;
 	for (int i = 0; i < myArray.Size(); ++i)
 	{
 		cout << myArray[i] << endl;
 	}
+
+	printf("\n----------------------------------------------------\n");
+
+	printf("\nChanging a value at an index\n");
 
 	myArray[1] = -5;
 
-	cout << "index 1 changed to: " << endl;
+	cout << "\nIndex 1 changed to" << endl;
 	for (int i = 0; i < myArray.Size(); ++i)
 	{
 		cout << myArray[i] << endl;
 	}
 
-	cout << "Sizes are" << endl << endl;
+	printf("\n----------------------------------------------------\n");
+
+	cout << "\nCurrent sizes are" << endl << endl;
 	cout << "Used is: " << myArray.Size() << endl;
 	cout << "Capacity is: " << myArray.Capacity() << endl;
 
+	printf("\n----------------------------------------------------\n");
+	printf("\nShrinking the capacity of the array\n");
 	myArray.Shrink();
-	cout << "Sizes are" << endl;
 	cout << "Used is: " << myArray.Size() << endl;
 	cout << "Capacity is: " << myArray.Capacity() << endl;
 
+	printf("\n----------------------------------------------------\n");
+	printf("\nClearing the array's elements\n\n");
 	myArray.Clear();
-	cout << "Sizes are" << endl;
 	cout << "Used is: " << myArray.Size() << endl;
 	cout << "Capacity is: " << myArray.Capacity() << endl;
 }
@@ -112,9 +123,6 @@ void TestDynamicArrayConstructors()
 	{
 		cout << copy[i] << endl;
 	}
-
-	//DynamicArray<float> copy2(array1);
-	//copy2 = array1;
 }
 
 //=======================================================================
@@ -127,17 +135,74 @@ void TestStack()
 	printf("	   STACK FUNCTIONS TEST");
 	printf("\n====================================================\n\n");
 
-	Stack<int> myStack;
-	DynamicArray<int> myArray(3);
+	Stack<int> myStack(5);
 
-	cout << "Adding initial values to a dynamic array" << endl << endl;
-	myArray.PushBack(9);
-	myArray.PushBack(8);
-	myArray.PushBack(7);
-	myArray.PushBack(6);
-	myArray.PushBack(5);
+	cout << "Adding some values to a new dynamic array" << endl << endl;
+	myStack.Push(9);
+	myStack.Push(8);
+	myStack.Push(7);
+	myStack.Push(6);
+	myStack.Push(5);
 
-	myStack.m_pData = myArray;
+	printf("----------------------------------------------------\n");
+
+	bool bIsEmpty = myStack.IsEmpty();
+
+	if (bIsEmpty)
+		printf("\nThe Stack is empty\n\n");
+	else
+		printf("\nThe Stack is not empty\n\n");
+
+	printf("----------------------------------------------------\n");
+
+	int nSize = myStack.Size();
+
+	printf("\nThe Stack has %d elements\n", nSize);
+
+	printf("----------------------------------------------------\n");
+
+	cout << endl << "Current values are" << endl;
+
+	for (int i = 0; i < myStack.m_pData.Size(); ++i)
+	{
+		cout << myStack.m_pData[i] << endl;
+	}
+
+	myStack.Push(99);
+
+	printf("\nPushed value '99' onto the stack\n");
+
+	cout << endl << "Updated values are" << endl;
+
+	for (int i = 0; i < myStack.Size(); ++i)
+	{
+		cout << myStack.m_pData[i] << endl;
+	}
+
+	printf("\n----------------------------------------------------\n");
+
+	cout << endl << "Current values are" << endl;
+
+	for (int i = 0; i < myStack.m_pData.Size(); ++i)
+	{
+		cout << myStack.m_pData[i] << endl;
+	}
+
+	printf("\nPopping off 3 values\n");
+	myStack.Pop();
+	myStack.Pop();
+	myStack.Pop();
+
+	cout << endl << "Leftover values are" << endl;
+
+	for (int i = 0; i < myStack.Size(); ++i)
+	{
+		cout << myStack.m_pData[i] << endl;
+	}
+
+	printf("\n----------------------------------------------------\n");
+
+	myStack.Top();
 
 }
 
@@ -150,6 +215,17 @@ void TestLinkedList()
 	printf("\n====================================================\n");
 	printf("	   LINKED LIST FUNCTIONS TEST");
 	printf("\n====================================================\n\n");
+
+	LinkedList<int> myList;
+
+	myList.PushFront(6);
+	myList.PushFront(3);
+	myList.PushFront(1);
+
+	myList.PushBack(78);
+	myList.PushBack(12);
+	myList.PushBack(34);
+	
 
 
 }
@@ -171,9 +247,7 @@ int main()
 	// LINKEDLIST
 	// Testing all the functions that Linked List possesses
 	TestLinkedList();
-
-
-
+	
 	system("pause");
 	return 0;
 }

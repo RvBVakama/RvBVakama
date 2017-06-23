@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "ResourceManager.h"
 #include "Texture.h"
+
 Menu::Menu()
 {
 	m_titleMenu = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/titleMenu.png");
@@ -40,7 +41,10 @@ void Menu::OnUpdate(float deltaTime, StateMachine* stateMachine)
 			nMenuNo = E_BEGIN;
 
 		if (input->isMouseButtonUp(INPUT_MOUSE_BUTTON_LEFT))
-			stateMachine->PushState(E_LOADING);
+		{
+			int nResult = stateMachine->PushState(E_LOADING);
+			_ASSERT(nResult == SUCCESS);
+		}
 	}
 
 	if (fMouseX > 364 && fMouseX < 672 && fMouseY > 83 && fMouseY < 177)

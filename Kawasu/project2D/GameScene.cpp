@@ -22,6 +22,9 @@ GameScene::GameScene()
 	bBombSpawned = true;
 
 	bDrawLowerState = false;
+
+	bTrue = true;
+	bTrue2 = false;
 }
 
 //--------------------------------------------------------------------------------------
@@ -62,7 +65,8 @@ void GameScene::OnUpdate(float deltaTime, StateMachine* stateMachine)
 
 	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
 	{
-		stateMachine->PushState(E_MENUPAUSE);
+		int nResult = stateMachine->PushState(E_MENUPAUSE);
+		_ASSERT(nResult == SUCCESS);
 
 		stateMachine->bDrawLowerState = true;
 	}

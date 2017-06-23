@@ -62,7 +62,8 @@ bool Application2D::startup()
 	m_StateMachine->RegisterState(E_GAMESCENE, m_BG);
 	m_StateMachine->RegisterState(E_MENUPAUSE, m_MenuPause);
 
-	m_StateMachine->PushState(E_SPLASH);
+	int nResult = m_StateMachine->PushState(E_SPLASH);
+	_ASSERT(nResult == SUCCESS);
 
 	m_cameraX = 0;
 	m_cameraY = 0;

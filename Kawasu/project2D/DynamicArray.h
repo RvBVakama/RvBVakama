@@ -1,6 +1,7 @@
 #pragma once
 #include <memory.h>
 #include <crtdbg.h>
+#include "Define.h"
 template <typename T>
 class DynamicArray
 {
@@ -46,12 +47,12 @@ public:
 		Insert(0, value);
 	}
 
-	void Insert(int index, T value)
+	int Insert(int index, T value)
 	{
 		_ASSERT(index <= m_nUsed);
 
 		if (index > m_nUsed)
-			return;
+			return OUT_OF_BOUNDS;
 
 		if (m_nUsed >= m_nCapacity)
 			Resize();
@@ -65,6 +66,8 @@ public:
 
 		m_pData[index] = value;
 		++m_nUsed;
+
+		return SUCCESS;
 	}
 
 	T PopBack()

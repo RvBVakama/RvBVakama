@@ -35,7 +35,8 @@ void Splash::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	m_fTimer += deltaTime;
 	if (m_fTimer > 3.0f)
 	{
-		stateMachine->PushState(E_TITLEMENU);
+		int nResult = stateMachine->PushState(E_TITLEMENU);
+		_ASSERT(nResult == SUCCESS);
 	}
 }
 

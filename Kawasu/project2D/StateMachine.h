@@ -12,10 +12,10 @@ public:
 	StateMachine();
 	~StateMachine();
 
-	void Update(float fDetaTime);
-	void Draw(Renderer2D* m_2dRenderer);
-	void Draw2ndFromTop(Renderer2D* m_2dRenderer);
-	void PushState(int nStateIndex);
+	int Update(float fDetaTime);
+	int Draw(Renderer2D* m_2dRenderer);
+	int Draw2ndFromTop(Renderer2D* m_2dRenderer);
+	int PushState(int nStateIndex);
 	void RegisterState(int nStateIndex, BaseState* pState);
 	void PopState();
 	bool bDrawLowerState;

@@ -64,4 +64,6 @@ private:
 	Bombs* m_Bomb;
 
 	bool bBombSpawned;
+	bool bTrue;
+	bool bTrue2;
 };

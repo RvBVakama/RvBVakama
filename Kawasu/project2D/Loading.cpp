@@ -36,7 +36,8 @@ void Loading::OnUpdate(float deltaTime, StateMachine* stateMachine)
 
 	if (m_nTimer > randTime)
 	{
-		stateMachine->PushState(E_GAMESCENE);
+		int nResult = stateMachine->PushState(E_GAMESCENE);
+		_ASSERT(nResult == SUCCESS);
 	}
 }
 
