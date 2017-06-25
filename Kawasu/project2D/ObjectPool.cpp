@@ -1,6 +1,9 @@
 #include "ObjectPool.h"
 #include "Bombs.h"
 
+//--------------------------------------------------------------------------------------------
+// Default Constructor / Creates data for the object pool via a for loop.
+//--------------------------------------------------------------------------------------------
 ObjectPool::ObjectPool(int nMaxSize)
 {
 	m_nMaxSize = nMaxSize;
@@ -10,6 +13,9 @@ ObjectPool::ObjectPool(int nMaxSize)
 	}
 }
 
+//--------------------------------------------------------------------------------------------
+// Default Destructor / Deletes data in the object pool via a for loop.
+//--------------------------------------------------------------------------------------------
 ObjectPool::~ObjectPool()
 {
 	for (int i = 0; i < m_nMaxSize; ++i)
@@ -18,6 +24,12 @@ ObjectPool::~ObjectPool()
 	}
 }
 
+//--------------------------------------------------------------------------------------------
+// Allocates ram to each object in the object pool via for loop based on the size of the pool.
+//
+// Return:
+//		Returns nullptr.
+//--------------------------------------------------------------------------------------------
 Bombs* ObjectPool::Allocate()
 {
 	for(int i = 0; i < m_nMaxSize; ++i)
@@ -32,6 +44,12 @@ Bombs* ObjectPool::Allocate()
 	return nullptr;
 }
 
+//--------------------------------------------------------------------------------------------
+// Deallocates ram from the passed in object, deactivating it.
+// 
+// Param:
+//		object: The object to be deallocated.
+//--------------------------------------------------------------------------------------------
 void ObjectPool::Deallocate(Bombs* object)
 {
 	object->SetActive(false);

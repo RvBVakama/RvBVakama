@@ -11,6 +11,8 @@ using namespace aie;
 
 //--------------------------------------------------------------------------------------
 // Default Constructor
+// Sets the texture, creates a object pool that holds 1024 bomb objects.
+// Sets some bools to safe initial values.
 //--------------------------------------------------------------------------------------
 GameScene::GameScene()
 {
@@ -28,13 +30,16 @@ GameScene::GameScene()
 }
 
 //--------------------------------------------------------------------------------------
-// Default Destructor
+// Default Destructor / Deletes things.
 //--------------------------------------------------------------------------------------
 GameScene::~GameScene()
 {
 	delete m_BombPool;
 }
 
+//--------------------------------------------------------------------------------------
+// OnEnter is ran whenever a state is pushed.
+//--------------------------------------------------------------------------------------
 void GameScene::OnEnter()
 {
 }
@@ -43,7 +48,7 @@ void GameScene::OnEnter()
 // Does nothing/might be used at later development.
 //
 // Param:
-//		deltaTime: It's not used.
+//		deltaTime: Passed into bombArray's update function which currently does nothing.
 //--------------------------------------------------------------------------------------
 void GameScene::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
@@ -76,7 +81,7 @@ void GameScene::OnUpdate(float deltaTime, StateMachine* stateMachine)
 // Draws the GameScene texture.
 //
 // Param:
-//		m_2dRenderer: Passes in the renderer to allow for drawing trxtures.
+//		m_2dRenderer: Passes in the renderer to allow for drawing textures.
 //--------------------------------------------------------------------------------------
 void GameScene::OnDraw(Renderer2D * m_2dRenderer)
 {
@@ -86,6 +91,9 @@ void GameScene::OnDraw(Renderer2D * m_2dRenderer)
 		m_BombArray[i]->Draw(m_2dRenderer);
 }
 
+//--------------------------------------------------------------------------------------
+// OnExit is ran whenever the stack has more than 0 states.
+//--------------------------------------------------------------------------------------
 void GameScene::OnExit()
 {
 }

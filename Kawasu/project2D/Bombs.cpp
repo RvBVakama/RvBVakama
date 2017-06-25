@@ -6,9 +6,10 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 
-//--------------------------------------------------------------------------------------
-// Default Constructor
-// -------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+// Default Constructor.
+// Adds the bombs to the collision manager, sets the texture up and sets the bCanKill bool to true.
+//-------------------------------------------------------------------------------------------------
 Bombs::Bombs()
 {
 	CollisionManager::GetInstance()->AddObject(this);
@@ -22,14 +23,16 @@ Bombs::Bombs()
 	bCanKill = true;
 }
 
-//--------------------------------------------------------------------------------------
-// Default Constructor
+//-------------------------------------------------------------------------------------------------
+// Alternative Constructor.
+// Adds the bombs to the collision manager, asks the user for the collision
+// bounds and position, sets the texture up and sets the bCanKill bool to true.
 // 
 // Param:
-//		pos: The position of the borders.
+//		pos: The position of the bombs.
 //		TL: Top left pixel to set the collision area.
 //		BR:	Bottom right pixel to set the collision area.
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 Bombs::Bombs(Vector2 pos, Vector2 TL, Vector2 BR)
 {
 	//Settings the collision area
@@ -57,22 +60,22 @@ Bombs::Bombs(Vector2 pos, Vector2 TL, Vector2 BR)
 	bCanKill = true;
 }
 
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // Default Destructor
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 Bombs::~Bombs()
 {
 	//delete m_BombTexture;
 }
 
-//--------------------------------------------------------------------------------------
-// Set the bomb's position
+//-------------------------------------------------------------------------------------------------
+// Set the bomb's position.
 // 
 // Param:
 //		pos: The position of the borders.
 //		TL: Top left pixel to set the collision area.
 //		BR:	Bottom right pixel to set the collision area.
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 void Bombs::setPos(Vector2 pos, Vector2 TL, Vector2 BR)
 {
 	//Settings the collision area
@@ -93,12 +96,12 @@ void Bombs::setPos(Vector2 pos, Vector2 TL, Vector2 BR)
 
 }
 
-//--------------------------------------------------------------------------------------
-// Prints "Crash" if something touches the spike.
+//-------------------------------------------------------------------------------------------------
+// Prints "Death" if the bomb touches a bat.
 //
 // Param:
 //		deltaTime: this makes it possible to keep time.
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 void Bombs::Update(float deltaTime)
 {
 	CollisionManager* pCollision = CollisionManager::GetInstance();
@@ -107,16 +110,16 @@ void Bombs::Update(float deltaTime)
 	Entity* colliding = pCollision->TestCollision(this);
 	if (colliding)
 	{
-		std::cout << "Crash" << std::endl;
+		std::cout << "Death" << std::endl;
 	}
 }
 
-//--------------------------------------------------------------------------------------
-// Draws the Spikes each frame.
+//-------------------------------------------------------------------------------------------------
+// Draws the bombs each frame.
 //
 // Param:
 //		m_2dRenderer: this makes it possible to render.
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 void Bombs::Draw(Renderer2D * m_2dRenderer)
 {
 	//drawing the texture

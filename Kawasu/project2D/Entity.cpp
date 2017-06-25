@@ -3,6 +3,7 @@
 
 //--------------------------------------------------------------------------------------
 // Default Constructor
+// Sets default collision areas and sets some bools and pointer to safe initial values.
 //--------------------------------------------------------------------------------------
 Entity::Entity()
 {
@@ -29,7 +30,8 @@ Entity::~Entity()
 }
 
 //--------------------------------------------------------------------------------------
-// Checks if the object has a parent if so it updates its transform to match that of its parent.
+// Checks if the object has a parent if so it updates its transform to match that of 
+// its parent.
 // Else it updates its own transform.
 //--------------------------------------------------------------------------------------
 void Entity::UpdateTransforms()
@@ -57,7 +59,8 @@ void Entity::SetParent(Entity* a)
 }
 
 //--------------------------------------------------------------------------------------
-// Pushes back the passed in object one spot back in the array to allow for adding for children.
+// Pushes back the passed in object one spot back in the array to allow for adding for
+// children.
 //
 // Param:
 //		a: Pushes back the passed in object one spot in the array.

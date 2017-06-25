@@ -3,7 +3,12 @@
 #include "Define.h"
 #include "ResourceManager.h"
 #include "Texture.h"
+#include "Loading.h"
 
+//-------------------------------------------------------------------------------------------------------
+// Default Constructor
+// Applies all the textures to their respective button objects and sets up the pos.x and pos.y values.
+//-------------------------------------------------------------------------------------------------------
 MenuPause::MenuPause()
 {
 	m_MenuPause = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/pause.png");
@@ -13,14 +18,28 @@ MenuPause::MenuPause()
 	m_pos.y = SCREENY / 2;
 }
 
+//-------------------------------------------------------------------------------------------------------
+// Default Destructor
+//-------------------------------------------------------------------------------------------------------
 MenuPause::~MenuPause()
 {
 }
 
+//-------------------------------------------------------------------------------------------------------
+// OnEnter is ran whenever a state is pushed.
+//-------------------------------------------------------------------------------------------------------
 void MenuPause::OnEnter()
 {
 }
 
+//-------------------------------------------------------------------------------------------------------
+// This update function checks for mouse location and input and based on if the mouse button was pressed
+// the games will either resume the game, load donation information or exit to the menu screen.
+// 
+// Param:
+//		deltaTime: Not currently used.
+//		stateMachine: Used to access the State Machine to be able to push the next state.
+//-------------------------------------------------------------------------------------------------------
 void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
 	aie::Input* input = aie::Input::getInstance();
@@ -53,7 +72,14 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	{
 		nMenuNo = E_EXIT;
 		printf("exit");
-		//quit
+
+		if (input->wasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
+		{
+			stateMachine->PopState();
+			stateMachine->PopState();
+			stateMachine->PopState();
+			stateMachine->bDrawLowerState = false;
+		}
 	}
 	
 	if (input->wasKeyPressed(aie::INPUT_KEY_ESCAPE))
@@ -63,6 +89,12 @@ void MenuPause::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	}
 }
 
+//-------------------------------------------------------------------------------------------------------
+// This draw function draws each button on the pause menu and on mouse hover draws a little selector icon
+// 
+// Param:
+//		m_2drenderer: Allows access to the Renderer2D class which allows us to render textures onscreen
+//-------------------------------------------------------------------------------------------------------
 void MenuPause::OnDraw(Renderer2D * m_2dRenderer)
 {
 	_ASSERT(m_2dRenderer);
@@ -87,7 +119,9 @@ void MenuPause::OnDraw(Renderer2D * m_2dRenderer)
 		break;
 	}
 }
-
+//-------------------------------------------------------------------------------------------------------
+// OnExit is ran whenever the stack has more than 0 states.
+//-------------------------------------------------------------------------------------------------------
 void MenuPause::OnExit()
 {
 }

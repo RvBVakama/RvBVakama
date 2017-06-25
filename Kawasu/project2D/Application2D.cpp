@@ -13,16 +13,29 @@
 #include "Define.h"
 #include "ObjectPool.h"
 
+//---------------------------------------------------------------------------------
+// Default Constructor
+//---------------------------------------------------------------------------------
 Application2D::Application2D() {
 
 }
 
+//---------------------------------------------------------------------------------
+// Default Destructor
+//---------------------------------------------------------------------------------
 Application2D::~Application2D() {
 
 }
-
-bool Application2D::startup() 
+//---------------------------------------------------------------------------------
+// Creates the renderer, collision manager, my resource manager and my state
+// manager then registers all possible states and pushes my spash screen state.
+//
+// Return:
+//		Returns true.
+//---------------------------------------------------------------------------------
+bool Application2D::startup()
 {
+	// Creating everything
 	m_2dRenderer = new aie::Renderer2D();
 	_ASSERT(m_2dRenderer);
 
@@ -56,22 +69,28 @@ bool Application2D::startup()
 	m_Splash = new Splash();
 	_ASSERT(m_Splash);
 
+	// Registering all possible states
 	m_StateMachine->RegisterState(E_SPLASH, m_Splash);
 	m_StateMachine->RegisterState(E_TITLEMENU, m_titleMenu);
 	m_StateMachine->RegisterState(E_LOADING, m_Loading);
 	m_StateMachine->RegisterState(E_GAMESCENE, m_BG);
 	m_StateMachine->RegisterState(E_MENUPAUSE, m_MenuPause);
 
+	// Pushing first state
 	int nResult = m_StateMachine->PushState(E_SPLASH);
 	_ASSERT(nResult == SUCCESS);
 
 	m_cameraX = 0;
 	m_cameraY = 0;
+
 	return true;
 }
 
+//---------------------------------------------------------------------------------
+// Deletes and destroys all managers, states etc... to prevent memory leaks.
+//---------------------------------------------------------------------------------
 void Application2D::shutdown() {
-	
+
 	delete m_Splash;
 	delete m_titleMenu;
 	delete m_Loading;
@@ -85,6 +104,14 @@ void Application2D::shutdown() {
 	delete m_2dRenderer;
 }
 
+//---------------------------------------------------------------------------------
+// Updates the state machine and checks if the user has clicked the end key and
+// ends the game.
+//
+// Param:
+//		deltaTime: delta time simply is seconds as a float value. It is passed into 
+// the state machine's update function.
+//---------------------------------------------------------------------------------
 void Application2D::update(float deltaTime) {
 
 	// input example
@@ -101,6 +128,10 @@ void Application2D::update(float deltaTime) {
 	m_StateMachine->Update(deltaTime);
 }
 
+//---------------------------------------------------------------------------------
+// Clears the screen then begins the 2d renderer then draws the state machine
+// by passing in the 2d renderer, finally ending the 2d renderer.
+//---------------------------------------------------------------------------------
 void Application2D::draw() {
 
 	// wipe the screen to the background colour
@@ -109,6 +140,6 @@ void Application2D::draw() {
 	m_2dRenderer->begin();
 
 	m_StateMachine->Draw(m_2dRenderer);
-	
+
 	m_2dRenderer->end();
 }

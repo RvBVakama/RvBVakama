@@ -21,7 +21,9 @@ public:
 
 	void OnDraw(Renderer2D* m_2dRenderer);
 
-	//optional extra to deinitialize anything you need to
+	//--------------------------------------------------------------------------------------
+	// OnExit is ran whenever the stack has more than 0 states.
+	//--------------------------------------------------------------------------------------
 	void OnExit();
 	
 private:

@@ -5,6 +5,10 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 
+//-----------------------------------------------------------------------------------------------------
+// Default Constructor
+// Applies all the textures to their respective button objects and sets up the pos.x and pos.y values.
+//-----------------------------------------------------------------------------------------------------
 Menu::Menu()
 {
 	m_titleMenu = ResourceManager<Texture>::GetInstance()->LoadResource("./textures/titleMenu.png");
@@ -17,14 +21,28 @@ Menu::Menu()
 	m_pos.y = SCREENY / 2;
 }
 
+//-----------------------------------------------------------------------------------------------------
+// Default Destructor
+//-----------------------------------------------------------------------------------------------------
 Menu::~Menu()
 {
 }
 
+//-----------------------------------------------------------------------------------------------------
+// OnEnter is ran whenever a state is pushed.
+//-----------------------------------------------------------------------------------------------------
 void Menu::OnEnter()
 {
 }
 
+//-----------------------------------------------------------------------------------------------------
+// This update function checks for mouse location and input and based on if the mouse button is down or
+// up the code enters different if statements to determine if the game should be started or exited.
+// 
+// Param:
+//		deltaTime: Not currently used.
+//		stateMachine: Used to access the State Machine to be able to push the next state.
+//-----------------------------------------------------------------------------------------------------
 void Menu::OnUpdate(float deltaTime, StateMachine* stateMachine)
 {
 	aie::Input* input = aie::Input::getInstance();
@@ -61,6 +79,13 @@ void Menu::OnUpdate(float deltaTime, StateMachine* stateMachine)
 	}
 }
 
+//-----------------------------------------------------------------------------------------------------
+// This draw function draws each button and also changes the texture of a button on mouse hover 
+// and click to a depressed texture of the button based on a couple if statements.
+// 
+// Param:
+//		m_2drenderer: Allows access to the Renderer2D class which allows us to render textures onscreen
+//-----------------------------------------------------------------------------------------------------
 void Menu::OnDraw(Renderer2D * m_2dRenderer)
 {
 	m_2dRenderer->drawSprite(m_titleMenu, m_pos.x, m_pos.y, 0, 0, 0, 1);
@@ -83,6 +108,9 @@ void Menu::OnDraw(Renderer2D * m_2dRenderer)
 	}
 }
 
+//-----------------------------------------------------------------------------------------------------
+// OnExit is ran whenever the stack has more than 0 states.
+//-----------------------------------------------------------------------------------------------------
 void Menu::OnExit()
 {
 }

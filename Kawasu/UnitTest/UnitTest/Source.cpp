@@ -30,7 +30,6 @@ void TestDynamicArray()
 
 	myArray.PushFront(1);
 
-
 	cout << "Sizes are" << endl;
 	cout << "Used is: " << myArray.Size() << endl;
 	cout << "Capacity is: " << myArray.Capacity() << endl;
@@ -41,7 +40,7 @@ void TestDynamicArray()
 		cout << myArray[i] << endl;
 	}
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 
 	int value = myArray.PopBack();
 	printf("\nPopping last value\n");
@@ -52,7 +51,7 @@ void TestDynamicArray()
 		cout << myArray[i] << endl;
 	}
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 
 	printf("\nRemoving a value\n");
 
@@ -64,7 +63,7 @@ void TestDynamicArray()
 		cout << myArray[i] << endl;
 	}
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 
 	printf("\nPopping a value\n");
 	
@@ -76,7 +75,7 @@ void TestDynamicArray()
 		cout << myArray[i] << endl;
 	}
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 
 	printf("\nChanging a value at an index\n");
 
@@ -88,19 +87,19 @@ void TestDynamicArray()
 		cout << myArray[i] << endl;
 	}
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 
 	cout << "\nCurrent sizes are" << endl << endl;
 	cout << "Used is: " << myArray.Size() << endl;
 	cout << "Capacity is: " << myArray.Capacity() << endl;
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 	printf("\nShrinking the capacity of the array\n");
 	myArray.Shrink();
-	cout << "Used is: " << myArray.Size() << endl;
+	cout << "\nUsed is: " << myArray.Size() << endl;
 	cout << "Capacity is: " << myArray.Capacity() << endl;
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 	printf("\nClearing the array's elements\n\n");
 	myArray.Clear();
 	cout << "Used is: " << myArray.Size() << endl;
@@ -118,7 +117,7 @@ void TestDynamicArrayConstructors()
 	array1.PushBack(5.5f);
 
 	DynamicArray<float> copy(array1);
-	cout << "Copy is" << endl;
+	cout << "Copy is" << endl << endl;
 	for (int i = 0; i < copy.Size(); ++i)
 	{
 		cout << copy[i] << endl;
@@ -144,7 +143,7 @@ void TestStack()
 	myStack.Push(6);
 	myStack.Push(5);
 
-	printf("----------------------------------------------------\n");
+	printf("-------------------------------------------------------------------\n");
 
 	bool bIsEmpty = myStack.IsEmpty();
 
@@ -153,17 +152,17 @@ void TestStack()
 	else
 		printf("\nThe Stack is not empty\n\n");
 
-	printf("----------------------------------------------------\n");
+	printf("-------------------------------------------------------------------\n");
 
 	int nSize = myStack.Size();
 
-	printf("\nThe Stack has %d elements\n", nSize);
+	printf("\nThe Stack has %d elements\n\n", nSize);
 
-	printf("----------------------------------------------------\n");
+	printf("-------------------------------------------------------------------\n");
 
 	cout << endl << "Current values are" << endl;
 
-	for (int i = 0; i < myStack.m_pData.Size(); ++i)
+	for (int i = 0; i < myStack.Size(); ++i)
 	{
 		cout << myStack.m_pData[i] << endl;
 	}
@@ -179,11 +178,11 @@ void TestStack()
 		cout << myStack.m_pData[i] << endl;
 	}
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 
 	cout << endl << "Current values are" << endl;
 
-	for (int i = 0; i < myStack.m_pData.Size(); ++i)
+	for (int i = 0; i < myStack.Size(); ++i)
 	{
 		cout << myStack.m_pData[i] << endl;
 	}
@@ -200,10 +199,63 @@ void TestStack()
 		cout << myStack.m_pData[i] << endl;
 	}
 
-	printf("\n----------------------------------------------------\n");
+	printf("\n-------------------------------------------------------------------\n");
 
-	myStack.Top();
+	printf("\nCollecting the top element in the array\n");
 
+	int nStackTop = myStack.Top();
+
+	cout << endl << "Current values are" << endl;
+
+	for (int i = 0; i < myStack.Size(); ++i)
+	{
+		cout << myStack.m_pData[i] << endl;
+	}
+
+	cout << endl << "Collected value " << nStackTop << endl;
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nCollecting the second top element in the array\n");
+
+	int nStackSecondTop = myStack.SecondFromTop();
+
+	cout << endl << "Current values are" << endl;
+
+	for (int i = 0; i < myStack.Size(); ++i)
+	{
+		cout << myStack.m_pData[i] << endl;
+	}
+
+	cout << endl << "Collected value " << nStackSecondTop << endl;
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nPopping off the remaining values\n");
+	myStack.Pop();
+	myStack.Pop();
+	myStack.Pop();
+
+	cout << endl << "Current values are" << endl;
+
+	if (myStack.Size() == 0)
+	{
+		printf("\nnone\n");
+	}
+	else
+	{
+		for (int i = 0; i < myStack.Size(); ++i)
+		{
+			cout << myStack.m_pData[i] << endl;
+		}
+	}
+
+	bIsEmpty = myStack.IsEmpty();
+
+	if (bIsEmpty)
+		printf("\nThe Stack is empty\n");
+	else
+		printf("\nThe Stack is not empty\n");
 }
 
 //=======================================================================
@@ -214,9 +266,13 @@ void TestLinkedList()
 {
 	printf("\n====================================================\n");
 	printf("	   LINKED LIST FUNCTIONS TEST");
-	printf("\n====================================================\n\n");
+	printf("\n====================================================\n");
 
 	LinkedList<int> myList;
+
+	Iter<int> iter;
+
+	printf("\nCreating and populating a new LinkedList . . .\n");
 
 	myList.PushFront(6);
 	myList.PushFront(3);
@@ -225,15 +281,301 @@ void TestLinkedList()
 	myList.PushBack(78);
 	myList.PushBack(12);
 	myList.PushBack(34);
+	myList.PushBack(34);
 	
+	printf("\nTesting operator overloads, peek at the code to see!\n");	
 
+	cout << endl << "Current values are" << endl;
 
+	iter = myList.Begin(); //=
+
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; // --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nInserting with a value which creates a node and assigns it a value\n");
+
+	//moving the iter back to the start	
+	iter = myList.Begin(); //=
+	
+	cout << endl << "Current values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	int nInsertValue = 5;
+
+	int nInsertIndex = 2;
+
+	myList.Insert(nInsertValue, nInsertIndex);
+	
+	cout << endl << "Inserting a new node with value " << nInsertValue << " at index " << nInsertIndex << endl;
+
+	//moving the iter back to the start	
+	iter = myList.Begin(); //=
+
+	cout << endl << "Updated values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nInserting with a node which already has a value\n");
+
+	//moving the iter back to the start	
+	iter = myList.Begin(); //=
+
+	cout << endl << "Current values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	ListNode<int>* newNodeOne = new ListNode<int>;
+
+	newNodeOne->data = 30;
+
+	int nInsertIndexOne = 3;
+
+	myList.Insert(newNodeOne, nInsertIndexOne);
+
+	cout << endl << "Inserting a new node with value " << newNodeOne->data << " at index " << nInsertIndexOne << endl;
+
+	//moving the iter back to the start	
+	iter = myList.Begin(); //=
+
+	cout << endl << "Updated values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	ListNode<int>* newNodeCatch = new ListNode<int>;
+
+	printf("\nCatching the first node\n");
+
+	newNodeCatch = myList.First();
+
+	printf("\nNode caught!\n");
+
+	cout << newNodeCatch->data << endl;
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nCatching the last node\n");
+
+	newNodeCatch = myList.Last();
+
+	printf("\nNode caught!\n");
+
+	cout << newNodeCatch->data << endl;
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nCounting how many nodes exist\n");
+
+	int nCount = myList.Count();
+
+	printf("\nThere are %d nodes!\n", nCount);
+
+	//printf("\n-------------------------------------------------------------------\n");
+	//
+	//printf("\nDeleting a node\n");
+	//
+	////moving the iter back to the start		
+	//iter = myList.Begin(); //=
+	//
+	//cout << endl << "Current values are" << endl;
+	//while (iter != myList.End()) // != ==
+	//{
+	//	std::cout << iter.value() << std::endl; //value()
+	//	++iter; //++ --
+	//}
+	//
+	//printf("\nDeleting the node\n");
+	//
+	//myList.Delete(newNode);
+	//
+	////moving the iter back to the start		
+	//iter = myList.Begin(); //=
+	//
+	//cout << endl << "Updated values are" << endl;
+	//while (iter != myList.End()) // != ==
+	//{
+	//	std::cout << iter.value() << std::endl; //value()
+	//	++iter; //++ --
+	//}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nErasing a node, this uses the Delete function\n");
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Current values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\nErasing the node\n");
+
+	myList.Erase(iter, 4);
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Updated values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nRemoving all node with the same value\n");
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Current values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	int nRemoveValue = 34;
+
+	printf("\nRemoving all nodes with value %d\n", nRemoveValue);
+
+	myList.Remove(nRemoveValue);
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Updated values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nPopping a node of the back\n");
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Current values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\nPopping the node of the back!\n");
+
+	myList.PopBack();
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Updated values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nPopping a node of the front\n");
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Current values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\nPopping the node of the front!\n");
+
+	myList.PopFront();
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Updated values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	printf("\nClearing the array\n");
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Current values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\nClearing!\n");
+
+	myList.Clear();
+
+	//moving the iter back to the start		
+	iter = myList.Begin(); //=
+
+	cout << endl << "Updated values are" << endl;
+	while (iter != myList.End()) // != ==
+	{
+		std::cout << iter.value() << std::endl; //value()
+		++iter; //++ --
+	}
+
+	printf("\n-------------------------------------------------------------------\n");
+
+	//delete newNodeOne;
+	//delete newNodeCatch;
 }
 
-
+#define _CRTDBG_MAP_ALLOC _CrtDumpMemoryLeaks
+#include <stdlib.h>  
+#include <crtdbg.h>  
 
 int main()
 {
+	// Memory leak checker
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	// DYNAMIC ARRAY
 	// Testing all the functions that Dynamic Array possesses
 	TestDynamicArray();
@@ -249,5 +591,6 @@ int main()
 	TestLinkedList();
 	
 	system("pause");
+
 	return 0;
 }

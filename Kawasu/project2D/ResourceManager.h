@@ -7,7 +7,15 @@ template<typename T>
 class ResourceManager
 {
 public:
-	
+
+	//--------------------------------------------------------------------------------------
+	// Loads the resource with the specified file location.
+	//
+	// Param:
+	//		szFilename: The location of the texture to be loaded.
+	// Return:
+	//		Returns the data at a index in the resource list.
+	//--------------------------------------------------------------------------------------
 	T* LoadResource (char* szFilename)
 	{
 		// Check if resource is already loaded
@@ -27,6 +35,9 @@ public:
 		return pResource->m_Data;
 	}
 
+	//--------------------------------------------------------------------------------------
+	// Unloads all resources.
+	//--------------------------------------------------------------------------------------
 	void UnloadAllResources()
 	{
 		for (int i = 0; i < m_ResourceList.Size(); ++i)
@@ -37,6 +48,9 @@ public:
 		m_ResourceList.Clear();
 	}
 
+	//--------------------------------------------------------------------------------------
+	// Creates the resource manager.
+	//--------------------------------------------------------------------------------------
 	static void Create()
 	{
 		if (!m_pInstance)
@@ -44,18 +58,35 @@ public:
 			_ASSERT(m_pInstance);
 	}
 
+	//--------------------------------------------------------------------------------------
+	// Destroys / Deletes the resource manager.
+	//--------------------------------------------------------------------------------------
 	static void Destroy()
 	{
 		delete m_pInstance;
 	}
 
+	//--------------------------------------------------------------------------------------
+	// Creates the resource manager.
+	// 
+	// Return:
+	//		Returns m_pInstance which is an instance of the resource manager.
+	//--------------------------------------------------------------------------------------
 	static ResourceManager<T>* GetInstance()
 	{
 		return m_pInstance;
 	}
 
 private:
+
+	//--------------------------------------------------------------------------------------
+	// Default Constructor
+	//--------------------------------------------------------------------------------------
 	ResourceManager() {}
+
+	//--------------------------------------------------------------------------------------
+	// Default Destructor
+	//--------------------------------------------------------------------------------------
 	~ResourceManager()
 	{
 		UnloadAllResources();

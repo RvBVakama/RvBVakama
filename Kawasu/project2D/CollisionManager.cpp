@@ -31,7 +31,8 @@ CollisionManager* CollisionManager::GetInstance()
 }
 
 //--------------------------------------------------------------------------------------
-// Checks if there is anything assigned m_instance and does not run code to add it to the CollisionManager.
+// Checks if there is anything assigned m_instance and does not run code to add it to 
+// the CollisionManager.
 //--------------------------------------------------------------------------------------
 void CollisionManager::Create()
 {
@@ -57,10 +58,12 @@ void CollisionManager::Print()
 }
 
 //--------------------------------------------------------------------------------------
-// Makes room for new objects to be stored in the STL vector array by pushing back the current item.
+// Makes room for new objects to be stored in the STL vector array by pushing back the 
+// current item.
 //
 // Param:
-//		pObject: Pushes back the passed in object once in the STL vector array to make room for more objects.
+//		pObject: Pushes back the passed in object once in the STL vector array to make 
+//				 room for more objects.
 //--------------------------------------------------------------------------------------
 void CollisionManager::AddObject(Entity* pObject)
 {
@@ -71,7 +74,8 @@ void CollisionManager::AddObject(Entity* pObject)
 // Removes objects from the array.
 // 
 // Param:
-//		pObject: Removes objects from the array by checking their location in the arrayand erasing them.
+//		pObject: Removes objects from the array by checking their location in the array
+//				 and erasing them.
 //--------------------------------------------------------------------------------------
 void CollisionManager::RemoveObject(Entity* pObject)
 {
