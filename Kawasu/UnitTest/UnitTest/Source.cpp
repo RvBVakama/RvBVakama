@@ -361,6 +361,8 @@ void TestLinkedList()
 		++iter; //++ --
 	}
 
+	myList.Delete(newNodeOne);
+
 	printf("\n-------------------------------------------------------------------\n");
 
 	ListNode<int>* newNodeCatch = new ListNode<int>;
@@ -391,8 +393,10 @@ void TestLinkedList()
 
 	printf("\nThere are %d nodes!\n", nCount);
 
-	//printf("\n-------------------------------------------------------------------\n");
-	//
+	myList.Delete(newNodeCatch);
+
+	printf("\n-------------------------------------------------------------------\n");
+	
 	//printf("\nDeleting a node\n");
 	//
 	////moving the iter back to the start		
@@ -418,8 +422,8 @@ void TestLinkedList()
 	//	std::cout << iter.value() << std::endl; //value()
 	//	++iter; //++ --
 	//}
-
-	printf("\n-------------------------------------------------------------------\n");
+	//
+	//printf("\n-------------------------------------------------------------------\n");
 
 	printf("\nErasing a node, this uses the Delete function\n");
 
@@ -562,9 +566,6 @@ void TestLinkedList()
 	}
 
 	printf("\n-------------------------------------------------------------------\n");
-
-	//delete newNodeOne;
-	//delete newNodeCatch;
 }
 
 #define _CRTDBG_MAP_ALLOC _CrtDumpMemoryLeaks
