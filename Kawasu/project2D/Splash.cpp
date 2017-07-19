@@ -63,4 +63,3 @@ void Splash::OnDraw(Renderer2D * m_2dRenderer)
 void Splash::OnExit()
 {
 }
-
