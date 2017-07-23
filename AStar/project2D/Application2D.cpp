@@ -73,6 +73,10 @@ bool Application2D::startup()
 	m_StateIdle = new stateIdle();
 	_ASSERT(m_StateIdle);
 
+	// Registering all possible states
+	m_StateMachine->RegisterState(E_STATEPATROL, m_StatePatrol);
+	m_StateMachine->RegisterState(E_STATEIDLE, m_StateIdle);
+
 	m_cameraX = -15;
 	m_cameraY = -15;
 
@@ -197,8 +201,9 @@ bool Application2D::startup()
 // ---------------------------------------------------------------------------------
 void Application2D::shutdown() {
 	
+	delete m_StateIdle;
+	delete m_StatePatrol;
 	delete m_pAgent;
-
 	delete m_pAStar;
 
 	for (int i = 0; i < GRID_SIZE * GRID_SIZE; ++i)

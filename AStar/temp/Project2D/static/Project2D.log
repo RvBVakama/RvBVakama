@@ -1,3 +1,9 @@
-﻿  Application2D.cpp
+﻿  statePatrol.cpp
+  stateIdle.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+MathLibrary.lib(Matrix3.obj) : warning LNK4099: PDB 'MathLibrary.pdb' was not found with 'MathLibrary.lib(Matrix3.obj)' or at 'D:\Git - RvBVakama\AStar\temp\Project2D\static\MathLibrary.pdb'; linking object as if no debug info
+MathLibrary.lib(Vector2.obj) : warning LNK4099: PDB 'MathLibrary.pdb' was not found with 'MathLibrary.lib(Vector2.obj)' or at 'D:\Git - RvBVakama\AStar\temp\Project2D\static\MathLibrary.pdb'; linking object as if no debug info
+MathLibrary.lib(Vector3.obj) : warning LNK4099: PDB 'MathLibrary.pdb' was not found with 'MathLibrary.lib(Vector3.obj)' or at 'D:\Git - RvBVakama\AStar\temp\Project2D\static\MathLibrary.pdb'; linking object as if no debug info
   Project2D.vcxproj -> D:\Git - RvBVakama\AStar\temp\Project2D\static\Project2D.exe
   Project2D.vcxproj -> D:\Git - RvBVakama\AStar\temp\Project2D\static\Project2D.pdb (Full PDB)

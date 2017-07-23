@@ -27,12 +27,12 @@ private:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 	aie::Audio*			m_audio;
-	StateMachine*		m_StateMachine;
-	statePatrol*		m_StatePatrol;
-	stateIdle*			m_StateIdle;
 	GridNode**			m_ppGrid;
 	AStar*				m_pAStar;
 	Agent*				m_pAgent;
+	StateMachine*		m_StateMachine;
+	statePatrol*		m_StatePatrol;
+	stateIdle*			m_StateIdle;
 
 	float m_cameraX, m_cameraY;
 };
