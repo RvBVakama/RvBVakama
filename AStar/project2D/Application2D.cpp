@@ -3,12 +3,15 @@
 #include "Font.h"
 #include "Input.h"
 #include "StateMachine.h"
+#include "statePatrol.h"
+#include "stateIdle.h"
 #include "ResourceManager.h"
 #include "CollisionManager.h"
 #include "Define.h"
 #include "GridNode.h"
 #include "AStar.h"
 #include "AStarNode.h"
+#include "Agent.h"
 #include <vector>
 
 using namespace std;
@@ -57,16 +60,21 @@ bool Application2D::startup()
 
 	CollisionManager* pPtr = CollisionManager::GetInstance();
 
-	m_font = new aie::Font("./font/consolas.ttf", 32);
-	_ASSERT(m_font);
-
-	m_audio = new aie::Audio("./audio/powerup.wav");
-	_ASSERT(m_audio);
-
 	ResourceManager<Texture>::Create();
 
-	m_cameraX = -350;
-	m_cameraY = -100;
+	m_pAgent = new Agent;
+
+	m_StateMachine = new StateMachine();
+	_ASSERT(m_StateMachine);
+
+	m_StatePatrol = new statePatrol();
+	_ASSERT(m_StatePatrol);
+
+	m_StateIdle = new stateIdle();
+	_ASSERT(m_StateIdle);
+
+	m_cameraX = -15;
+	m_cameraY = -15;
 
 	m_ppGrid = new GridNode*[GRID_SIZE * GRID_SIZE];
 
@@ -178,7 +186,9 @@ bool Application2D::startup()
 	m_pAStar = new AStar(GRID_SIZE * GRID_SIZE);
 
 	m_pAStar->SetHeuristic(&DiagonalHeurisitic);
-
+	
+	nTime = 0;
+	
 	return true;
 }
 
@@ -187,6 +197,8 @@ bool Application2D::startup()
 // ---------------------------------------------------------------------------------
 void Application2D::shutdown() {
 	
+	delete m_pAgent;
+
 	delete m_pAStar;
 
 	for (int i = 0; i < GRID_SIZE * GRID_SIZE; ++i)
@@ -197,8 +209,6 @@ void Application2D::shutdown() {
 	delete[] m_ppGrid;
 
 	ResourceManager<Texture>::Destroy();
-	delete m_audio;
-	delete m_font;
 	CollisionManager::Destroy();
 	delete m_2dRenderer;
 }
@@ -215,10 +225,9 @@ void Application2D::update(float deltaTime) {
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
-
-	// example of audio
-	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
-		m_audio->play();
+	
+	// Updating the Agent
+	m_pAgent->Update(deltaTime);
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_END))
@@ -256,16 +265,25 @@ void Application2D::draw() {
 
 			float otherX = otherNode->m_v2Pos.x;
 			float otherY = otherNode->m_v2Pos.y;
-			m_2dRenderer->setRenderColour(0xFF0000FF);
-			m_2dRenderer->drawLine(x, y, otherX, otherY, EDGE_THICKNESS);
-			m_2dRenderer->setRenderColour(0xFFFFFFFF);
+			//m_2dRenderer->setRenderColour(0xFF0000FF);
+			//m_2dRenderer->drawLine(x, y, otherX, otherY, EDGE_THICKNESS);
+			//m_2dRenderer->setRenderColour(0xFFFFFFFF);
 		}
 
 	}
-	
+
+	++nTime;
+
+	aie::Input* input = aie::Input::getInstance();
+
+	int fMouseX = input->getMouseX();
+	int fMouseY = input->getMouseY();
+
 	//Draw Path
 	vector<AStarNode*> path;
-	m_pAStar->CalculatePath(m_ppGrid[31], m_ppGrid[868], &path);
+
+	if (nTime < 900)
+		m_pAStar->CalculatePath(m_ppGrid[1], m_ppGrid[nTime], &path);
 
 	for (size_t i = 0; i < path.size(); ++i)
 	{

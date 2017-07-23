@@ -43,6 +43,8 @@ bool Application2D::startup()
 
 	CollisionManager* pPtr = CollisionManager::GetInstance();
 
+	ResourceManager<Texture>::Create();
+
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 	_ASSERT(m_font);
 
@@ -51,8 +53,6 @@ bool Application2D::startup()
 
 	m_StateMachine = new StateMachine();
 	_ASSERT(m_StateMachine);
-
-	ResourceManager<Texture>::Create();
 
 	m_BG = new GameScene();
 	_ASSERT(m_BG);

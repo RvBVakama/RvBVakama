@@ -161,6 +161,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Act.cpp" />
+    <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Agents.cpp" />
     <ClCompile Include="Application2D.cpp" />
     <ClCompile Include="AStar.cpp" />
@@ -168,10 +170,16 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="IBehaviour.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Seek.cpp" />
+    <ClCompile Include="stateIdle.cpp" />
     <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="statePatrol.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Act.h" />
+    <ClInclude Include="Agent.h" />
     <ClInclude Include="Agents.h" />
     <ClInclude Include="Application2D.h" />
     <ClInclude Include="AStar.h" />
@@ -184,12 +192,16 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GridNode.h" />
     <ClInclude Include="Heap.h" />
+    <ClInclude Include="IBehaviour.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ListNode.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Seek.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="stateIdle.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="statePatrol.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

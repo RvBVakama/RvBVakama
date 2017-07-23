@@ -1,13 +1,13 @@
 #pragma once
 
-#define SCREENX 1920
-#define SCREENY 1080
+#define SCREENX 900
+#define SCREENY 900
 #define GRID_SIZE 30
 #define NODE_SIZE 30
-#define GRID_SPACING 5
+#define GRID_SPACING 0
 #define ADJACENT_COST 10
 #define DIAGONAL_COST 14
-#define EDGE_THICKNESS 2.0f
+#define EDGE_THICKNESS 0.0f
 
 //------------------------------------------------
 // List of states that are used in the game
