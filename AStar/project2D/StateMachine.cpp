@@ -42,7 +42,7 @@ int StateMachine::Update(float deltaTime)
 	if (m_Stack.Size() < 0)
 		return STACK_NEGATIVE_SIZE;
 	
-	m_Stack.Top()->OnUpdate(deltaTime, this);
+	m_Stack.Top()->OnUpdate(deltaTime);
 
 	return SUCCESS;
 }

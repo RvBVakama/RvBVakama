@@ -1,7 +1,5 @@
 #include "stateIdle.h"
 
-
-
 stateIdle::stateIdle()
 {
 }
@@ -15,7 +13,7 @@ void stateIdle::OnEnter()
 {
 }
 
-void stateIdle::OnUpdate(float deltaTime, StateMachine * stateMachine)
+void stateIdle::OnUpdate(float fDeltaTime)
 {
 }
 

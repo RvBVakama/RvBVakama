@@ -1,9 +1,17 @@
-﻿  statePatrol.cpp
-  stateIdle.cpp
+﻿  stateAgent.cpp
+l:\rvbvakama\astar\project2d\stateagent.cpp(13): error C2512: 'statePatrol::statePatrol': no appropriate default constructor available
+  Application2D.cpp
+l:\rvbvakama\astar\project2d\application2d.cpp(167): error C2514: 'Player': class has no constructors
+  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
+l:\rvbvakama\astar\project2d\application2d.cpp(177): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
+l:\rvbvakama\astar\project2d\application2d.cpp(213): error C2027: use of undefined type 'Player'
+  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
+l:\rvbvakama\astar\project2d\application2d.cpp(213): error C2227: left of '->Update' must point to class/struct/union/generic type
+l:\rvbvakama\astar\project2d\application2d.cpp(263): error C2027: use of undefined type 'Player'
+  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
+l:\rvbvakama\astar\project2d\application2d.cpp(263): error C2227: left of '->Draw' must point to class/struct/union/generic type
   Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-MathLibrary.lib(Matrix3.obj) : warning LNK4099: PDB 'MathLibrary.pdb' was not found with 'MathLibrary.lib(Matrix3.obj)' or at 'D:\Git - RvBVakama\AStar\temp\Project2D\static\MathLibrary.pdb'; linking object as if no debug info
-MathLibrary.lib(Vector2.obj) : warning LNK4099: PDB 'MathLibrary.pdb' was not found with 'MathLibrary.lib(Vector2.obj)' or at 'D:\Git - RvBVakama\AStar\temp\Project2D\static\MathLibrary.pdb'; linking object as if no debug info
-MathLibrary.lib(Vector3.obj) : warning LNK4099: PDB 'MathLibrary.pdb' was not found with 'MathLibrary.lib(Vector3.obj)' or at 'D:\Git - RvBVakama\AStar\temp\Project2D\static\MathLibrary.pdb'; linking object as if no debug info
-  Project2D.vcxproj -> D:\Git - RvBVakama\AStar\temp\Project2D\static\Project2D.exe
-  Project2D.vcxproj -> D:\Git - RvBVakama\AStar\temp\Project2D\static\Project2D.pdb (Full PDB)
+  Compiling...
+  statePatrol.cpp
+  Generating Code...

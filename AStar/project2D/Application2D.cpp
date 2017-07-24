@@ -3,32 +3,17 @@
 #include "Font.h"
 #include "Input.h"
 #include "StateMachine.h"
-#include "statePatrol.h"
-#include "stateIdle.h"
 #include "ResourceManager.h"
 #include "CollisionManager.h"
 #include "Define.h"
 #include "GridNode.h"
-#include "AStar.h"
 #include "AStarNode.h"
 #include "Agent.h"
+#include "DecisionTree.h"
+#include "Player.h"
 #include <vector>
 
 using namespace std;
-
-int DiagonalHeurisitic(AStarNode* pNode, AStarNode* pEnd)
-{
-	int difX = ((GridNode*)pNode)->m_nIndexX - ((GridNode*)pEnd)->m_nIndexX;
-	int difY = ((GridNode*)pNode)->m_nIndexY - ((GridNode*)pEnd)->m_nIndexY;
-
-	difX = abs(difX);
-	difY = abs(difY);
-
-	if (difX > difY)
-		return (DIAGONAL_COST * difY) + ADJACENT_COST * (difX - difY);
-	else
-		return (DIAGONAL_COST * difX) + ADJACENT_COST * (difY - difX);
-}
 
 // ---------------------------------------------------------------------------------
 // Default Constructor
@@ -62,20 +47,13 @@ bool Application2D::startup()
 
 	ResourceManager<Texture>::Create();
 
+	m_pDecisionTree = new DecisionTree;
+	
 	m_pAgent = new Agent;
 
-	m_StateMachine = new StateMachine();
-	_ASSERT(m_StateMachine);
+	m_pStateMachine = new StateMachine();
+	_ASSERT(m_pStateMachine);
 
-	m_StatePatrol = new statePatrol();
-	_ASSERT(m_StatePatrol);
-
-	m_StateIdle = new stateIdle();
-	_ASSERT(m_StateIdle);
-
-	// Registering all possible states
-	m_StateMachine->RegisterState(E_STATEPATROL, m_StatePatrol);
-	m_StateMachine->RegisterState(E_STATEIDLE, m_StateIdle);
 
 	m_cameraX = -15;
 	m_cameraY = -15;
@@ -186,12 +164,7 @@ bool Application2D::startup()
 		}
 	}
 
-	//Setup AStar
-	m_pAStar = new AStar(GRID_SIZE * GRID_SIZE);
-
-	m_pAStar->SetHeuristic(&DiagonalHeurisitic);
-	
-	nTime = 0;
+	m_pPlayer = new Player(m_ppGrid);
 	
 	return true;
 }
@@ -200,11 +173,10 @@ bool Application2D::startup()
 // Deletes and destroys all managers, states etc... to prevent memory leaks.
 // ---------------------------------------------------------------------------------
 void Application2D::shutdown() {
-	
-	delete m_StateIdle;
-	delete m_StatePatrol;
+
+	delete m_pPlayer;
+	delete m_pDecisionTree;
 	delete m_pAgent;
-	delete m_pAStar;
 
 	for (int i = 0; i < GRID_SIZE * GRID_SIZE; ++i)
 	{
@@ -237,6 +209,11 @@ void Application2D::update(float deltaTime) {
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_END))
 		quit();
+
+	m_pPlayer->Update(deltaTime);
+
+	m_pDecisionTree->Update(nullptr, deltaTime);
+
 }
 
 // ---------------------------------------------------------------------------------
@@ -277,29 +254,30 @@ void Application2D::draw() {
 
 	}
 
-	++nTime;
 
 	aie::Input* input = aie::Input::getInstance();
 
 	int fMouseX = input->getMouseX();
 	int fMouseY = input->getMouseY();
 
-	//Draw Path
-	vector<AStarNode*> path;
+	m_pPlayer->Draw(m_2dRenderer);
 
-	if (nTime < 900)
-		m_pAStar->CalculatePath(m_ppGrid[1], m_ppGrid[nTime], &path);
+	////Draw Path
+	//vector<AStarNode*> path;
 
-	for (size_t i = 0; i < path.size(); ++i)
-	{
-		GridNode* pNode = (GridNode*)path[i];
+	//if (nTime < 900)
+	//	m_pAStar->CalculatePath(m_ppGrid[1], m_ppGrid[nTime], &path);
 
-		m_2dRenderer->setRenderColour(0x00FF00FF);
-		m_2dRenderer->drawBox(pNode->m_v2Pos.x, pNode->m_v2Pos.y, NODE_SIZE / 0.9f, NODE_SIZE / 0.9f);
-		m_2dRenderer->setRenderColour(0xFFFFFFFF);
-	}
+	//for (size_t i = 0; i < path.size(); ++i)
+	//{
+	//	GridNode* pNode = (GridNode*)path[i];
 
-	// m_StateMachine->Draw(m_2dRenderer);
+	//	m_2dRenderer->setRenderColour(0x00FF00FF);
+	//	m_2dRenderer->drawBox(pNode->m_v2Pos.x, pNode->m_v2Pos.y, NODE_SIZE / 0.9f, NODE_SIZE / 0.9f);
+	//	m_2dRenderer->setRenderColour(0xFFFFFFFF);
+	//}
+
+	// m_pStateMachine->Draw(m_2dRenderer);
 
 	m_2dRenderer->end();
 }

@@ -1,10 +1,7 @@
 #pragma once
-
 #include "IBehaviour.h"
 #include "Vector2.h"
 #include <vector>
-
-class StateMachine;
 
 class Agent
 {
@@ -23,7 +20,4 @@ protected:
 	Vector2 m_acceleration;
 	Vector2 m_velocity;
 	Vector2 m_position;
-
-private:
-	StateMachine*		m_StateMachine;
 };

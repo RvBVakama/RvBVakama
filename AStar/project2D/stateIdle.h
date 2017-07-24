@@ -10,7 +10,7 @@ public:
 	~stateIdle();
 
 	void OnEnter();
-	void OnUpdate(float deltaTime, StateMachine* stateMachine);
+	void OnUpdate(float fDeltaTime);
 	void OnDraw(Renderer2D* renderer2d);
 	void OnExit();
 };

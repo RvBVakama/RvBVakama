@@ -6,9 +6,9 @@
 struct GridNode;
 class AStar;
 class StateMachine;
-class statePatrol;
-class stateIdle;
 class Agent;
+class DecisionTree;
+class Player;
 
 class Application2D : public aie::Application {
 public:
@@ -21,18 +21,16 @@ public:
 
 	virtual void update(float deltaTime);
 	virtual void draw();
-	int nTime;
 
 private:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 	aie::Audio*			m_audio;
 	GridNode**			m_ppGrid;
-	AStar*				m_pAStar;
 	Agent*				m_pAgent;
-	StateMachine*		m_StateMachine;
-	statePatrol*		m_StatePatrol;
-	stateIdle*			m_StateIdle;
+	StateMachine*		m_pStateMachine;
+	Player*				m_pPlayer;
+	DecisionTree*		m_pDecisionTree;
 
 	float m_cameraX, m_cameraY;
 };
