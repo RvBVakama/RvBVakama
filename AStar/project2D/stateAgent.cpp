@@ -4,14 +4,13 @@
 #include "stateIdle.h"
 #include "Define.h"
 
-
 stateAgent::stateAgent()
 {
 	m_pStateMachine = new StateMachine();
 	_ASSERT(m_pStateMachine);
 
-	m_pStatePatrol = new statePatrol();
-	_ASSERT(m_pStatePatrol);
+	/*m_pStatePatrol = new statePatrol();
+	_ASSERT(m_pStatePatrol);*/
 
 	m_pStateIdle = new stateIdle();
 	_ASSERT(m_pStateIdle);
@@ -20,7 +19,6 @@ stateAgent::stateAgent()
 	m_pStateMachine->RegisterState(E_STATEPATROL, m_pStatePatrol);
 	m_pStateMachine->RegisterState(E_STATEIDLE, m_pStateIdle);
 }
-
 
 stateAgent::~stateAgent()
 {

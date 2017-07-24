@@ -8,9 +8,10 @@
 #include "Define.h"
 #include "GridNode.h"
 #include "AStarNode.h"
-#include "Agent.h"
 #include "DecisionTree.h"
-#include "Player.h"
+#include "Agent.h"
+#include "stateAgent.h"
+#include "statePatrol.h"
 #include <vector>
 
 using namespace std;
@@ -50,6 +51,8 @@ bool Application2D::startup()
 	m_pDecisionTree = new DecisionTree;
 	
 	m_pAgent = new Agent;
+
+	m_pStateAgent = new stateAgent;
 
 	m_pStateMachine = new StateMachine();
 	_ASSERT(m_pStateMachine);
@@ -164,7 +167,7 @@ bool Application2D::startup()
 		}
 	}
 
-	m_pPlayer = new Player(m_ppGrid);
+	statePatrol::InstStatePatrol(m_ppGrid);
 	
 	return true;
 }
@@ -174,7 +177,6 @@ bool Application2D::startup()
 // ---------------------------------------------------------------------------------
 void Application2D::shutdown() {
 
-	delete m_pPlayer;
 	delete m_pDecisionTree;
 	delete m_pAgent;
 
@@ -210,7 +212,9 @@ void Application2D::update(float deltaTime) {
 	if (input->isKeyDown(aie::INPUT_KEY_END))
 		quit();
 
-	m_pPlayer->Update(deltaTime);
+	//statePatrol::InstStatePatrol()->OnUpdate(deltaTime);
+
+	//m_pPlayer->Update(deltaTime);
 
 	m_pDecisionTree->Update(nullptr, deltaTime);
 
@@ -260,7 +264,7 @@ void Application2D::draw() {
 	int fMouseX = input->getMouseX();
 	int fMouseY = input->getMouseY();
 
-	m_pPlayer->Draw(m_2dRenderer);
+	//m_pPlayer->Draw(m_2dRenderer);
 
 	////Draw Path
 	//vector<AStarNode*> path;

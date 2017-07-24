@@ -12,6 +12,8 @@ class StateMachine;
 class statePatrol : public BaseState
 {
 public:
+	static statePatrol* InstStatePatrol(GridNode** ppGrid);
+
 	statePatrol(GridNode** ppGrid);
 	~statePatrol();
 
@@ -21,6 +23,8 @@ public:
 	void OnExit();
 
 private:
+	static statePatrol* m_InstStatePatrol;
+
 	Vector2				m_v2Pos;
 	AStar*				m_pAStar;
 

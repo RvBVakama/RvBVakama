@@ -28,6 +28,7 @@ private:
 	aie::Audio*			m_audio;
 	GridNode**			m_ppGrid;
 	Agent*				m_pAgent;
+	stateAgent*			m_pStateAgent;
 	StateMachine*		m_pStateMachine;
 	Player*				m_pPlayer;
 	DecisionTree*		m_pDecisionTree;

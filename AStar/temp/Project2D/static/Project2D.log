@@ -1,17 +1,12 @@
 ﻿  stateAgent.cpp
-l:\rvbvakama\astar\project2d\stateagent.cpp(13): error C2512: 'statePatrol::statePatrol': no appropriate default constructor available
+d:\git - rvbvakama\astar\project2d\stateagent.cpp(12): error C2512: 'statePatrol::statePatrol': no appropriate default constructor available
+  main.cpp
+d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2143: syntax error: missing ';' before '*'
+d:\git - rvbvakama\astar\project2d\application2d.h(31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2238: unexpected token(s) preceding ';'
   Application2D.cpp
-l:\rvbvakama\astar\project2d\application2d.cpp(167): error C2514: 'Player': class has no constructors
-  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
-l:\rvbvakama\astar\project2d\application2d.cpp(177): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
-  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
-l:\rvbvakama\astar\project2d\application2d.cpp(213): error C2027: use of undefined type 'Player'
-  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
-l:\rvbvakama\astar\project2d\application2d.cpp(213): error C2227: left of '->Update' must point to class/struct/union/generic type
-l:\rvbvakama\astar\project2d\application2d.cpp(263): error C2027: use of undefined type 'Player'
-  l:\rvbvakama\astar\project2d\application2d.h(11): note: see declaration of 'Player'
-l:\rvbvakama\astar\project2d\application2d.cpp(263): error C2227: left of '->Draw' must point to class/struct/union/generic type
-  Generating Code...
-  Compiling...
-  statePatrol.cpp
+d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2143: syntax error: missing ';' before '*'
+d:\git - rvbvakama\astar\project2d\application2d.h(31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2238: unexpected token(s) preceding ';'
+d:\git - rvbvakama\astar\project2d\application2d.cpp(55): error C2065: 'm_pStateAgent': undeclared identifier
   Generating Code...

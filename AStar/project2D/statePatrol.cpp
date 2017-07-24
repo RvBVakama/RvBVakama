@@ -2,6 +2,8 @@
 #include "BaseState.h"
 #include "Define.h"
 
+statePatrol* statePatrol::m_InstStatePatrol = nullptr;
+
 int DiagonalHeurisitic(AStarNode* pNode, AStarNode* pEnd)
 {
 	//Diagonal Shortcut Method
@@ -15,6 +17,15 @@ int DiagonalHeurisitic(AStarNode* pNode, AStarNode* pEnd)
 		return (DIAGONAL_COST * difY) + ADJACENT_COST * (difX - difY);
 	else
 		return (DIAGONAL_COST * difX) + ADJACENT_COST * (difY - difX);
+}
+
+statePatrol * statePatrol::InstStatePatrol(GridNode** ppGrid)
+{
+	if (m_InstStatePatrol == nullptr)
+	{
+		m_InstStatePatrol = new statePatrol(ppGrid);
+	}
+	return m_InstStatePatrol;
 }
 
 statePatrol::statePatrol(GridNode** ppGrid)

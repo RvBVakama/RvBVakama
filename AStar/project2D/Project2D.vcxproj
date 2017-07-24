@@ -163,7 +163,6 @@
   <ItemGroup>
     <ClCompile Include="Act.cpp" />
     <ClCompile Include="Agent.cpp" />
-    <ClCompile Include="Agents.cpp" />
     <ClCompile Include="Application2D.cpp" />
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="BaseState.cpp" />
@@ -186,7 +185,6 @@
   <ItemGroup>
     <ClInclude Include="Act.h" />
     <ClInclude Include="Agent.h" />
-    <ClInclude Include="Agents.h" />
     <ClInclude Include="Application2D.h" />
     <ClInclude Include="AStar.h" />
     <ClInclude Include="AStarNode.h" />
