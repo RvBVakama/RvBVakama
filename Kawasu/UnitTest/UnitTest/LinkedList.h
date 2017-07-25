@@ -167,8 +167,8 @@ public:
 			++iter;
 		}
 
-		ListNode<T>* node; // = new ListNode<T>();
-		//_ASSERT(node);
+		ListNode<T>* node = new ListNode<T>();
+		_ASSERT(node);
 
 		node = newNode;
 		node->next = iter.current->next;

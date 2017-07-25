@@ -1,13 +1,14 @@
 #include "stateAgent.h"
-#include "StateMachine.h"
+#include "AIStateMachine.h"
 #include "statePatrol.h"
 #include "stateIdle.h"
 #include "Define.h"
+#include "Renderer2D.h"
 
 stateAgent::stateAgent()
 {
-	m_pStateMachine = new StateMachine();
-	_ASSERT(m_pStateMachine);
+	m_pAIStateMachine = new AIStateMachine();
+	_ASSERT(m_pAIStateMachine);
 
 	m_pStatePatrol = new statePatrol();
 	_ASSERT(m_pStatePatrol);
@@ -16,22 +17,26 @@ stateAgent::stateAgent()
 	_ASSERT(m_pStateIdle);
 
 	// Registering all possible states
-	m_pStateMachine->RegisterState(E_STATEPATROL, m_pStatePatrol);
-	m_pStateMachine->RegisterState(E_STATEIDLE, m_pStateIdle);
+	m_pAIStateMachine->RegisterState(E_STATEPATROL, m_pStatePatrol);
+	m_pAIStateMachine->RegisterState(E_STATEIDLE, m_pStateIdle);
+
+	m_pAIStateMachine->PushState(E_STATEPATROL);
 }
 
 stateAgent::~stateAgent()
 {
-	delete m_pStateMachine;
+	delete m_pAIStateMachine;
 	delete m_pStateIdle;
 	delete m_pStatePatrol;
 }
 
 void stateAgent::Update(float deltaTime)
 {
-	m_pStateMachine->Update(deltaTime);
+	m_pAIStateMachine->Update(deltaTime);
+	m_pStatePatrol->OnUpdate(deltaTime);
 }
 
-void stateAgent::Draw()
+void stateAgent::Draw(Renderer2D* m_pRenderer2D)
 {
+	m_pStatePatrol->OnDraw(m_pRenderer2D);
 }

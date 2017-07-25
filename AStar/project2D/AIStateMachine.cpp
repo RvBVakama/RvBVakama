@@ -77,8 +77,9 @@ int AIStateMachine::PushState(int nStateIndex)
 	_ASSERT(nStateIndex < m_StateList.Size());
 	if (nStateIndex >= m_StateList.Size())
 		return INVALID_STATE;
-	if (m_CurrentState)
-		m_CurrentState->OnExit();
+
+	//if (m_CurrentState)
+	//	m_CurrentState->OnExit();
 	
 	m_CurrentState = m_StateList[nStateIndex];
 

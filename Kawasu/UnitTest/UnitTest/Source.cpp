@@ -365,11 +365,11 @@ void TestLinkedList()
 
 	printf("\n-------------------------------------------------------------------\n");
 
-	//ListNode<int>* newNodeCatch;// = new ListNode<int>;
+	ListNode<int>* newNodeCatch = new ListNode<int>;
 
 	printf("\nCatching the first node\n");
 
-	ListNode<int>* newNodeCatch = myList.First();
+	newNodeCatch = myList.First();
 
 	printf("\nNode caught!\n");
 

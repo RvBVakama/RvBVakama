@@ -50,10 +50,13 @@ bool Application2D::startup()
 	ResourceManager<Texture>::Create();
 
 	m_pDecisionTree = new DecisionTree;
-	
+	_ASSERT(m_pDecisionTree);
+
 	m_pAgent = new Agent;
+	_ASSERT(m_pAgent);
 
 	m_pStateAgent = new stateAgent;
+	_ASSERT(m_pStateAgent);
 
 	m_pStateMachine = new StateMachine();
 	_ASSERT(m_pStateMachine);
@@ -172,7 +175,6 @@ bool Application2D::startup()
 	//	}
 	//}
 
-	
 	return true;
 }
 
@@ -181,6 +183,7 @@ bool Application2D::startup()
 // ---------------------------------------------------------------------------------
 void Application2D::shutdown() {
 
+	delete m_pStateAgent;
 	delete m_pDecisionTree;
 	delete m_pAgent;
 	Grid::destroy();
@@ -211,7 +214,7 @@ void Application2D::update(float deltaTime) {
 
 	//statePatrol::InstStatePatrol()->OnUpdate(deltaTime);
 
-	//m_pPlayer->Update(deltaTime);
+	m_pStateAgent->Update(deltaTime);
 
 	m_pDecisionTree->Update(nullptr, deltaTime);
 
@@ -238,7 +241,7 @@ void Application2D::draw() {
 	int fMouseX = input->getMouseX();
 	int fMouseY = input->getMouseY();
 
-	//m_pPlayer->Draw(m_2dRenderer);
+	m_pStateAgent->Draw(m_2dRenderer);
 
 	////Draw Path
 	//vector<AStarNode*> path;
