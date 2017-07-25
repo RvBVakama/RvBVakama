@@ -12,10 +12,10 @@ class stateAgent : public Agent
 		~stateAgent();
 	
 		void Update(float deltaTime);
+		void Draw();
 
 	private:
 		StateMachine*		m_pStateMachine;
 		statePatrol*		m_pStatePatrol;
 		stateIdle*			m_pStateIdle;
 };
-

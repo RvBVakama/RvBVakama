@@ -9,8 +9,8 @@ stateAgent::stateAgent()
 	m_pStateMachine = new StateMachine();
 	_ASSERT(m_pStateMachine);
 
-	/*m_pStatePatrol = new statePatrol();
-	_ASSERT(m_pStatePatrol);*/
+	m_pStatePatrol = new statePatrol();
+	_ASSERT(m_pStatePatrol);
 
 	m_pStateIdle = new stateIdle();
 	_ASSERT(m_pStateIdle);
@@ -29,5 +29,9 @@ stateAgent::~stateAgent()
 
 void stateAgent::Update(float deltaTime)
 {
+	m_pStateMachine->Update(deltaTime);
+}
 
+void stateAgent::Draw()
+{
 }

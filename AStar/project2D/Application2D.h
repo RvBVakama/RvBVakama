@@ -7,6 +7,7 @@ struct GridNode;
 class AStar;
 class StateMachine;
 class Agent;
+class stateAgent;
 class DecisionTree;
 class Player;
 
@@ -26,12 +27,12 @@ private:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 	aie::Audio*			m_audio;
-	GridNode**			m_ppGrid;
 	Agent*				m_pAgent;
 	stateAgent*			m_pStateAgent;
 	StateMachine*		m_pStateMachine;
 	Player*				m_pPlayer;
 	DecisionTree*		m_pDecisionTree;
+	
 
 	float m_cameraX, m_cameraY;
 };

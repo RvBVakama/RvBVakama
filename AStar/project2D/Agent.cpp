@@ -12,4 +12,9 @@ void Agent::Update(float deltaTime)
 {
 	for (auto& behaviour : m_behaviours)
 		behaviour->Update(this, deltaTime);
+}
+
+void Agent::Draw()
+{
+
 };

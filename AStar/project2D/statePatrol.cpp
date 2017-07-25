@@ -1,8 +1,7 @@
 #include "statePatrol.h"
 #include "BaseState.h"
 #include "Define.h"
-
-statePatrol* statePatrol::m_InstStatePatrol = nullptr;
+#include "Grid.h"
 
 int DiagonalHeurisitic(AStarNode* pNode, AStarNode* pEnd)
 {
@@ -19,18 +18,9 @@ int DiagonalHeurisitic(AStarNode* pNode, AStarNode* pEnd)
 		return (DIAGONAL_COST * difX) + ADJACENT_COST * (difY - difX);
 }
 
-statePatrol * statePatrol::InstStatePatrol(GridNode** ppGrid)
+statePatrol::statePatrol()
 {
-	if (m_InstStatePatrol == nullptr)
-	{
-		m_InstStatePatrol = new statePatrol(ppGrid);
-	}
-	return m_InstStatePatrol;
-}
-
-statePatrol::statePatrol(GridNode** ppGrid)
-{
-	m_ppGrid = ppGrid;
+	//m_ppGrid = ppGrid;
 
 	//Setup AStar
 	m_pAStar = new AStar(GRID_SIZE * GRID_SIZE);
@@ -55,7 +45,10 @@ void statePatrol::OnUpdate(float fDeltaTime)
 {
 	m_path.clear();
 	//if (nTime < 900)
-	m_pAStar->CalculatePath(m_ppGrid[1], m_ppGrid[899], &m_path);
+
+	Grid* pGrid = Grid::getInstance();
+
+	m_pAStar->CalculatePath(pGrid->GetNode(1), pGrid->GetNode(899), &m_path);
 
 	if (m_nNextNode >= m_path.size())
 	{

@@ -12,9 +12,7 @@ class StateMachine;
 class statePatrol : public BaseState
 {
 public:
-	static statePatrol* InstStatePatrol(GridNode** ppGrid);
-
-	statePatrol(GridNode** ppGrid);
+	statePatrol();
 	~statePatrol();
 
 	void OnEnter();
@@ -23,12 +21,10 @@ public:
 	void OnExit();
 
 private:
-	static statePatrol* m_InstStatePatrol;
-
 	Vector2				m_v2Pos;
 	AStar*				m_pAStar;
 
-	GridNode**			m_ppGrid;
+	//GridNode**			m_ppGrid;
 
 	vector<AStarNode*> m_path;
 

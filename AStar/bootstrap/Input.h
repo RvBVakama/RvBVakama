@@ -141,7 +141,7 @@ class Input {
 public:
 
 	// returns access to the singleton instance
-	static Input* getInstance() { return m_instance;  }
+	static Input* getInstance() { return m_instance; }
 
 	// query the keyboard state
 	bool isKeyDown(int inputKeyID);

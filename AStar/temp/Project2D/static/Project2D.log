@@ -1,12 +1,7 @@
-﻿  stateAgent.cpp
-d:\git - rvbvakama\astar\project2d\stateagent.cpp(12): error C2512: 'statePatrol::statePatrol': no appropriate default constructor available
-  main.cpp
-d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2143: syntax error: missing ';' before '*'
-d:\git - rvbvakama\astar\project2d\application2d.h(31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2238: unexpected token(s) preceding ';'
-  Application2D.cpp
-d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2143: syntax error: missing ';' before '*'
-d:\git - rvbvakama\astar\project2d\application2d.h(31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-d:\git - rvbvakama\astar\project2d\application2d.h(31): error C2238: unexpected token(s) preceding ';'
-d:\git - rvbvakama\astar\project2d\application2d.cpp(55): error C2065: 'm_pStateAgent': undeclared identifier
+﻿  Grid.cpp
   Generating Code...
+  Compiling...
+  statePatrol.cpp
+  Application2D.cpp
+  Generating Code...
+  Project2D.vcxproj -> L:\RvBVakama\AStar\temp\Project2D\static\Project2D.exe

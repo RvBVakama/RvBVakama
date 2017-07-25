@@ -90,6 +90,9 @@ bool AStar::CalculatePath(AStarNode* pStart, AStarNode* pEnd, vector<AStarNode*>
 
 					//Update Prev node pointer.
 					pNeighbour->m_pPrev = pCurrentNode;
+				
+					//Sort Heap
+
 				}
 			}
 				//else (neighbour not in open list)

@@ -11,6 +11,7 @@ public:
 	~Agent();
 
 	virtual void Update(float deltaTime);
+	virtual void Draw();
 
 protected:
 	
