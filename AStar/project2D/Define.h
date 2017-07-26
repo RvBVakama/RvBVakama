@@ -14,7 +14,7 @@
 //------------------------------------------------
 enum STATES
 {
-	E_STATEPATROL,
+	E_STATEMOVEMENT,
 	E_STATEIDLE
 };
 

@@ -11,7 +11,7 @@
 #include "DecisionTree.h"
 #include "Agent.h"
 #include "stateAgent.h"
-#include "statePatrol.h"
+#include "stateMovement.h"
 #include "Grid.h"
 #include <vector>
 
@@ -210,7 +210,7 @@ void Application2D::update(float deltaTime) {
 	if (input->isKeyDown(aie::INPUT_KEY_END))
 		quit();
 
-	//statePatrol::InstStatePatrol()->OnUpdate(deltaTime);
+	//stateMovement::InststateMovement()->OnUpdate(deltaTime);
 
 	m_pStateAgent->Update(deltaTime);
 

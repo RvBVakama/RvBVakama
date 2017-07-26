@@ -7,7 +7,7 @@
 using namespace aie;
 
 class AIStateMachine;
-class statePatrol;
+class stateMovement;
 class stateIdle;
 
 class stateAgent : public Agent
@@ -24,6 +24,6 @@ private:
 	vector<AStarNode*> m_path;
 	
 	AIStateMachine*		m_pAIStateMachine;
-	statePatrol*		m_pStatePatrol;
+	stateMovement*		m_pstateMovement;
 	stateIdle*			m_pStateIdle;
 };

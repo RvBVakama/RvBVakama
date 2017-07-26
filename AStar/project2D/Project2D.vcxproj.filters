@@ -42,9 +42,6 @@
     <ClCompile Include="Agent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="statePatrol.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="stateIdle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -87,13 +84,13 @@
     <ClCompile Include="AIBaseState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StateMove.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SeekBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FleeBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stateMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -150,9 +147,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Agent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="statePatrol.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stateIdle.h">
@@ -224,13 +218,13 @@
     <ClInclude Include="AIBaseState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StateMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SeekBehaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FleeBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stateMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

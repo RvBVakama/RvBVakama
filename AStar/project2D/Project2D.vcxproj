@@ -186,8 +186,7 @@
     <ClCompile Include="stateAgent.cpp" />
     <ClCompile Include="stateIdle.cpp" />
     <ClCompile Include="StateMachine.cpp" />
-    <ClCompile Include="StateMove.cpp" />
-    <ClCompile Include="statePatrol.cpp" />
+    <ClCompile Include="stateMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
@@ -233,8 +232,7 @@
     <ClInclude Include="stateAgent.h" />
     <ClInclude Include="stateIdle.h" />
     <ClInclude Include="StateMachine.h" />
-    <ClInclude Include="StateMove.h" />
-    <ClInclude Include="statePatrol.h" />
+    <ClInclude Include="stateMovement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
