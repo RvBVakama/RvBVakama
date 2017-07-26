@@ -1,6 +1,8 @@
 #pragma once
 #include "Agent.h"
 #include "Renderer2D.h"
+#include <vector>
+#include "AStarNode.h"
 
 using namespace aie;
 
@@ -15,9 +17,12 @@ public:
 	~stateAgent();
 
 	void Update(float deltaTime);
-	void Draw(Renderer2D* m_pRenderer2D);
+	void Draw(Renderer2D* pRenderer2D);
+
 
 private:
+	vector<AStarNode*> m_path;
+	
 	AIStateMachine*		m_pAIStateMachine;
 	statePatrol*		m_pStatePatrol;
 	stateIdle*			m_pStateIdle;

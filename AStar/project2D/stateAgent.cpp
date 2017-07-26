@@ -4,6 +4,8 @@
 #include "stateIdle.h"
 #include "Define.h"
 #include "Renderer2D.h"
+#include "Renderer2D.h"
+#include "GridNode.h"
 
 stateAgent::stateAgent()
 {
@@ -32,11 +34,22 @@ stateAgent::~stateAgent()
 
 void stateAgent::Update(float deltaTime)
 {
-	m_pAIStateMachine->Update(deltaTime);
-	m_pStatePatrol->OnUpdate(deltaTime);
+	m_pAIStateMachine->Update(this, deltaTime);
 }
 
-void stateAgent::Draw(Renderer2D* m_pRenderer2D)
+void stateAgent::Draw(Renderer2D* pRenderer2D)
 {
-	m_pStatePatrol->OnDraw(m_pRenderer2D);
+	//Draw Path
+
+	for (size_t i = 0; i < m_path.size(); ++i)
+	{
+		GridNode* pNode = (GridNode*)m_path[i];
+
+		pRenderer2D->setRenderColour(0x00FF00FF);
+		pRenderer2D->drawBox(pNode->m_v2Pos.x, pNode->m_v2Pos.y, NODE_SIZE / 0.9f, NODE_SIZE / 0.9f);
+		pRenderer2D->setRenderColour(0xFFFFFFFF);
+	}
+
+	//Draw Player
+	pRenderer2D->drawBox(m_v2Pos.x, m_v2Pos.y, 30, 30);
 }

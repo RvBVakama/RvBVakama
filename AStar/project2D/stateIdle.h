@@ -1,16 +1,16 @@
 #pragma once
-#include "BaseState.h"
+#include "AIBaseState.h"
 
 class StateMachine;
 
-class stateIdle : public BaseState
+class stateIdle : public AIBaseState
 {
 public:
 	stateIdle();
 	~stateIdle();
 
 	void OnEnter();
-	void OnUpdate(float fDeltaTime);
+	void OnUpdate(Agent* pAgent, float fDeltaTime);
 	void OnDraw(Renderer2D* renderer2d);
 	void OnExit();
 };

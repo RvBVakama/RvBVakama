@@ -13,7 +13,7 @@ void stateIdle::OnEnter()
 {
 }
 
-void stateIdle::OnUpdate(float fDeltaTime)
+void stateIdle::OnUpdate(Agent* pAgent, float fDeltaTime)
 {
 }
 

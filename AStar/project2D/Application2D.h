@@ -27,7 +27,7 @@ private:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 	aie::Audio*			m_audio;
-	Agent*				m_pAgent;
+	//Agent*				m_pAgent;
 	stateAgent*			m_pStateAgent;
 	StateMachine*		m_pStateMachine;
 	Player*				m_pPlayer;

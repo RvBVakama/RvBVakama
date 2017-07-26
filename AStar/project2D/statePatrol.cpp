@@ -1,91 +1,44 @@
 #include "statePatrol.h"
-#include "BaseState.h"
-#include "Define.h"
-#include "Grid.h"
-
-int DiagonalHeurisitic(AStarNode* pNode, AStarNode* pEnd)
-{
-	//Diagonal Shortcut Method
-	int difX = ((GridNode*)pNode)->m_nIndexX - ((GridNode*)pEnd)->m_nIndexX;
-	int difY = ((GridNode*)pNode)->m_nIndexY - ((GridNode*)pEnd)->m_nIndexY;
-
-	difX = abs(difX);
-	difY = abs(difY);
-
-	if (difX > difY)
-		return (DIAGONAL_COST * difY) + ADJACENT_COST * (difX - difY);
-	else
-		return (DIAGONAL_COST * difX) + ADJACENT_COST * (difY - difX);
-}
+#include "SeekBehaviour.h"
+#include "FleeBehaviour.h"
+#include "Agent.h"
 
 statePatrol::statePatrol()
 {
-	//m_ppGrid = ppGrid;
-
-	//Setup AStar
-	m_pAStar = new AStar(GRID_SIZE * GRID_SIZE);
-
-	m_pAStar->SetHeuristic(&DiagonalHeurisitic);
-
-	m_nNextNode = 0;
-
-	nTime = 0;
+	m_BehaviourList.push_back(new SeekBehaviour(1.0));
+	m_BehaviourList.push_back(new FleeBehaviour(0.0f));
 }
 
 statePatrol::~statePatrol()
 {
-	delete m_pAStar;
-}
-
-void statePatrol::OnEnter()
-{
-}
-
-void statePatrol::OnUpdate(float fDeltaTime)
-{
-	m_path.clear();
-	//if (nTime < 900)
-
-	Grid* pGrid = Grid::getInstance();
-
-	m_pAStar->CalculatePath(pGrid->GetNode(1), pGrid->GetNode(899), &m_path);
-
-	if (m_nNextNode >= m_path.size())
+	for (unsigned int i = 0; i < m_BehaviourList.size(); ++i)
 	{
-		++nTime;
-		m_nNextNode = 0;
-	}
-
-	Vector2 dest = ((GridNode*)m_path[m_nNextNode])->m_v2Pos;
-	Vector2 dir = dest - m_v2Pos;
-	dir.Normalise();
-	m_v2Pos = m_v2Pos + dir * 200.0f * fDeltaTime;
-
-	Vector2 dist = dest - m_v2Pos;
-	float fDist = dist.Magnitude();
-	if (fDist < 10)
-	{
-		++m_nNextNode;
+		delete m_BehaviourList[i];
 	}
 }
 
-void statePatrol::OnDraw(Renderer2D* m_pRenderer2D)
+void statePatrol::OnUpdate(Agent* pAgent, float fDeltaTime)
 {
-	//Draw Path
+	Vector2 v2TotalForce;
 
-	for (size_t i = 0; i < m_path.size(); ++i)
+	//updates states and combines with wighting
+	//Vector2 v2Force = m_BehaviourList[0]->Calculate(pAgent, fDeltaTime);
+
+	for (unsigned int i = 0; i < m_BehaviourList.size(); ++i)
 	{
-		GridNode* pNode = (GridNode*)m_path[i];
+		Vector2 currentForce = m_BehaviourList[i]->Calculate(pAgent, fDeltaTime);
+		currentForce = currentForce * m_BehaviourList[i]->m_fWeighting;
 
-		m_pRenderer2D->setRenderColour(0x00FF00FF);
-		m_pRenderer2D->drawBox(pNode->m_v2Pos.x, pNode->m_v2Pos.y, NODE_SIZE / 0.9f, NODE_SIZE / 0.9f);
-		m_pRenderer2D->setRenderColour(0xFFFFFFFF);
+		v2TotalForce = v2TotalForce + currentForce;
+		//limit total forces
+		float fMagnitude = v2TotalForce.Magnitude();
+		if (fMagnitude > 10.0f)
+		{
+			v2TotalForce.Normalise();
+			v2TotalForce = v2TotalForce * 10.0f;
+			break;
+		}
+
+		pAgent->SetPosition(pAgent->GetPosition() + v2TotalForce);
 	}
-
-	//Draw Player
-	m_pRenderer2D->drawBox(m_v2Pos.x, m_v2Pos.y, 30, 30);
-}
-
-void statePatrol::OnExit()
-{
 }

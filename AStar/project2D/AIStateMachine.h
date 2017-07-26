@@ -1,7 +1,7 @@
 #pragma once
 #include "Renderer2D.h"
 #include "DynamicArray.h"
-#include "BaseState.h"
+#include "AIBaseState.h"
 #include "Stack.h"
 
 using namespace aie;
@@ -12,14 +12,14 @@ public:
 	AIStateMachine();
 	~AIStateMachine();
 
-	int Update(float fDetaTime);
+	int Update(Agent* pAgent, float fDetaTime);
 	int Draw(Renderer2D* m_2dRenderer);
 	int PushState(int nStateIndex);
-	void RegisterState(int nStateIndex, BaseState* pState);
+	void RegisterState(int nStateIndex, AIBaseState* pState);
 	void PopState();
 	bool bDrawLowerState;
 
 private:
-	DynamicArray<BaseState*> m_StateList;
-	BaseState* m_CurrentState;
+	DynamicArray<AIBaseState*> m_StateList;
+	AIBaseState* m_CurrentState;
 };

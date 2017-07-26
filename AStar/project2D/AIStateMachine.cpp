@@ -32,13 +32,13 @@ AIStateMachine::~AIStateMachine()
 //		Returns SUCCESS if the function ran correctly, asserts and returns
 //		STATELIST_NEGATIVE_SIZE if the function failed to execute correctly.
 //---------------------------------------------------------------------------------------
-int AIStateMachine::Update(float deltaTime)
+int AIStateMachine::Update(Agent* pAgent, float deltaTime)
 {
 	_ASSERT(m_StateList.Size() >= 0);
 	if (m_StateList.Size() < 0)
 		return STATELIST_NEGATIVE_SIZE;
 
-	m_CurrentState->OnUpdate(deltaTime);
+	m_CurrentState->OnUpdate(pAgent, deltaTime);
 
 	return SUCCESS;
 }
@@ -97,7 +97,7 @@ int AIStateMachine::PushState(int nStateIndex)
 //		pState: The pointer to the state to be registered to be able to be used by 
 //				state machine.
 //---------------------------------------------------------------------------------------
-void AIStateMachine::RegisterState(int nStateIndex, BaseState* pState)
+void AIStateMachine::RegisterState(int nStateIndex, AIBaseState* pState)
 {
 	int nResult = m_StateList.Insert(nStateIndex, pState);
 	_ASSERT(nResult == 0);

@@ -52,8 +52,8 @@ bool Application2D::startup()
 	m_pDecisionTree = new DecisionTree;
 	_ASSERT(m_pDecisionTree);
 
-	m_pAgent = new Agent;
-	_ASSERT(m_pAgent);
+	//m_pAgent = new Agent;
+	//_ASSERT(m_pAgent);
 
 	m_pStateAgent = new stateAgent;
 	_ASSERT(m_pStateAgent);
@@ -67,8 +67,6 @@ bool Application2D::startup()
 	m_cameraX = -15;
 	m_cameraY = -15;
 	
-
-
 	//m_ppGrid = new GridNode*[GRID_SIZE * GRID_SIZE];
 
 	//for (int x = 0; x < GRID_SIZE; ++x)
@@ -185,7 +183,7 @@ void Application2D::shutdown() {
 
 	delete m_pStateAgent;
 	delete m_pDecisionTree;
-	delete m_pAgent;
+//	delete m_pAgent;
 	Grid::destroy();
 	ResourceManager<Texture>::Destroy();
 	CollisionManager::Destroy();
@@ -206,7 +204,7 @@ void Application2D::update(float deltaTime) {
 	aie::Input* input = aie::Input::getInstance();
 	
 	// Updating the Agent
-	m_pAgent->Update(deltaTime);
+	//m_pAgent->Update(pAgent, deltaTime);
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_END))

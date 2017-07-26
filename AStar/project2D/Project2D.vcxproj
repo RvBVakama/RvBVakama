@@ -161,13 +161,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Act.cpp" />
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="AIBaseState.cpp" />
     <ClCompile Include="AIBehaviourTree.cpp" />
     <ClCompile Include="AIStateMachine.cpp" />
     <ClCompile Include="Application2D.cpp" />
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="BaseState.cpp" />
+    <ClCompile Include="behaviourPatrol.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="CompositeNode.cpp" />
@@ -176,19 +177,21 @@
     <ClCompile Include="DecisionPrint.cpp" />
     <ClCompile Include="DecisionTree.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FleeBehaviour.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="IBehaviour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Seek.cpp" />
+    <ClCompile Include="SeekBehaviour.cpp" />
     <ClCompile Include="stateAgent.cpp" />
     <ClCompile Include="stateIdle.cpp" />
     <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="StateMove.cpp" />
     <ClCompile Include="statePatrol.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Act.h" />
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="AIBaseState.h" />
     <ClInclude Include="AIBehaviourTree.h" />
     <ClInclude Include="AIStateMachine.h" />
     <ClInclude Include="Application2D.h" />
@@ -197,6 +200,7 @@
     <ClInclude Include="BaseDecision.h" />
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="BehaviourAction.h" />
+    <ClInclude Include="behaviourPatrol.h" />
     <ClInclude Include="BehaviourQuestion.h" />
     <ClInclude Include="BehaviourNode.h" />
     <ClInclude Include="Collider.h" />
@@ -211,6 +215,7 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FleeBehaviour.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GridNode.h" />
     <ClInclude Include="Heap.h" />
@@ -221,13 +226,14 @@
     <ClInclude Include="Question.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="Seek.h" />
+    <ClInclude Include="SeekBehaviour.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="Sequence.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="stateAgent.h" />
     <ClInclude Include="stateIdle.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="StateMove.h" />
     <ClInclude Include="statePatrol.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
